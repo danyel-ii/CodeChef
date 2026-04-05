@@ -4,6 +4,17 @@ CodeChef is a touch-first Flutter app for building transformation recipes on mob
 
 Users can enter text, compose multi-step recipes, preview results live, save recipes locally, review what each operation does, and export a Markdown report of a full transformation run.
 
+## Install
+
+Android APKs are published to [GitHub Releases](https://github.com/danyel-ii/CodeChef/releases).
+
+1. Open the [Releases page](https://github.com/danyel-ii/CodeChef/releases) on your Android device.
+2. Download `app-release.apk` from the latest release.
+3. Open the downloaded file and follow the on-screen prompts to install it.
+4. If Android asks you to allow installation from unknown sources, grant the permission and proceed.
+
+For full details see [Android Releases](documents/ANDROID_RELEASES.md).
+
 ## Current product scope
 
 - Mobile-first workbench for text payload transformation
@@ -18,9 +29,9 @@ Users can enter text, compose multi-step recipes, preview results live, save rec
 
 ## Repository layout
 
-- [apps/mobile](/Users/danyel-ii/CodeChef/apps/mobile): Flutter application
-- [packages](/Users/danyel-ii/CodeChef/packages): domain, execution, persistence, and pack packages
-- [documents](/Users/danyel-ii/CodeChef/documents): product-facing documentation
+- [apps/mobile](apps/mobile): Flutter application
+- [packages](packages): domain, execution, persistence, and pack packages
+- [documents](documents): product-facing documentation
 
 ## Key user flows
 
@@ -34,9 +45,9 @@ Users can enter text, compose multi-step recipes, preview results live, save rec
 
 ## Documentation
 
-- [Project Overview](/Users/danyel-ii/CodeChef/documents/PROJECT_OVERVIEW.md)
-- [Learning App Review](/Users/danyel-ii/CodeChef/documents/LEARNING_APP_REVIEW.md)
-- [Android Releases](/Users/danyel-ii/CodeChef/documents/ANDROID_RELEASES.md)
+- [Project Overview](documents/PROJECT_OVERVIEW.md)
+- [Learning App Review](documents/LEARNING_APP_REVIEW.md)
+- [Android Releases](documents/ANDROID_RELEASES.md)
 
 ## Development
 

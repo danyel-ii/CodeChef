@@ -22,7 +22,7 @@ Example release page:
 
 The workflow is defined in:
 
-[android-release.yml](/Users/danyel-ii/CodeChef/.github/workflows/android-release.yml)
+[android-release.yml](../.github/workflows/android-release.yml)
 
 It:
 
@@ -37,10 +37,10 @@ It:
 If you have a local keystore configured in `apps/mobile/android/key.properties`, you can build a release APK with:
 
 ```bash
-cd /Users/danyel-ii/CodeChef/apps/mobile
+cd apps/mobile
 flutter build apk --release
 ```
 
-The output file is:
+The output file is at:
 
-[app-release.apk](/Users/danyel-ii/CodeChef/apps/mobile/build/app/outputs/flutter-apk/app-release.apk)
+`apps/mobile/build/app/outputs/flutter-apk/app-release.apk`
