@@ -70,7 +70,7 @@ class SettingsScreen extends StatelessWidget {
                             textColor: Color(0xFFF7F3E9),
                             title: 'STATUS',
                             body:
-                                'Android/Web workflow is validated here. iOS/macOS native builds still need full Xcode.',
+                                'Android is the primary release target here, with the GitHub APK pipeline and mobile workflow actively maintained.',
                           ),
                           _SettingsBand(
                             background: Color(0xFFE37BA3),
