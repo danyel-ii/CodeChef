@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Decode a query value",
+    "input": "hello%20world",
+    "params": {
+      "plusAsSpace": true
+    },
+    "expectedOutputText": "hello world"
+  }
+]

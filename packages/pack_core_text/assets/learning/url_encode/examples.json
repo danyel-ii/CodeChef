@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Encode a query value",
+    "input": "hello world",
+    "params": {
+      "spaceAsPlus": false
+    },
+    "expectedOutputText": "hello%20world"
+  }
+]

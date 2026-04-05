@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Decode text from hex",
+    "input": "48656c6c6f",
+    "params": {
+      "treatOutputAs": "text"
+    },
+    "expectedOutputText": "Hello"
+  }
+]

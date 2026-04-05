@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Encode text to hex",
+    "input": "Hello",
+    "params": {
+      "uppercase": false
+    },
+    "expectedOutputText": "48656c6c6f"
+  }
+]

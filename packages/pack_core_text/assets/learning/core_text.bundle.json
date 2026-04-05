@@ -1,0 +1,11 @@
+{
+  "bundleId": "core.text",
+  "operations": [
+    "core.text.base64.encode",
+    "core.text.base64.decode",
+    "core.text.hex.encode",
+    "core.text.hex.decode",
+    "core.text.url.encode",
+    "core.text.url.decode"
+  ]
+}

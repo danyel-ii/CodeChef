@@ -1,0 +1,115 @@
+name: Android Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Existing tag to publish, for example v0.1.0"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    env:
+      FLUTTER_VERSION: "3.41.6"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Bootstrap workspace
+        run: dart run melos bootstrap
+
+      - name: Materialize Android signing files
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          if [[ -z "${ANDROID_KEYSTORE_BASE64}" || -z "${ANDROID_KEYSTORE_PASSWORD}" || -z "${ANDROID_KEY_ALIAS}" || -z "${ANDROID_KEY_PASSWORD}" ]]; then
+            echo "Missing Android signing secrets." >&2
+            exit 1
+          fi
+
+          mkdir -p apps/mobile/android
+          echo "${ANDROID_KEYSTORE_BASE64}" | base64 --decode > apps/mobile/android/upload-keystore.jks
+
+          cat > apps/mobile/android/key.properties <<EOF
+          storePassword=${ANDROID_KEYSTORE_PASSWORD}
+          keyPassword=${ANDROID_KEY_PASSWORD}
+          keyAlias=${ANDROID_KEY_ALIAS}
+          storeFile=upload-keystore.jks
+          EOF
+
+      - name: Run app tests
+        working-directory: apps/mobile
+        run: |
+          flutter analyze
+          flutter test
+
+      - name: Build signed APK
+        working-directory: apps/mobile
+        run: flutter build apk --release
+
+      - name: Generate checksum
+        run: |
+          cd apps/mobile/build/app/outputs/flutter-apk
+          sha256sum app-release.apk > app-release.apk.sha256
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-release-apk
+          path: |
+            apps/mobile/build/app/outputs/flutter-apk/app-release.apk
+            apps/mobile/build/app/outputs/flutter-apk/app-release.apk.sha256
+
+      - name: Resolve release tag
+        id: release_tag
+        run: |
+          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            echo "value=${GITHUB_REF_NAME}" >> "${GITHUB_OUTPUT}"
+          elif [[ -n "${{ inputs.release_tag }}" ]]; then
+            echo "value=${{ inputs.release_tag }}" >> "${GITHUB_OUTPUT}"
+          else
+            echo "No release tag supplied; skipping GitHub Release publishing."
+            echo "value=" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Publish GitHub Release assets
+        if: steps.release_tag.outputs.value != ''
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.release_tag.outputs.value }}
+        run: |
+          gh release view "${RELEASE_TAG}" >/dev/null 2>&1 || gh release create "${RELEASE_TAG}" --generate-notes
+          gh release upload "${RELEASE_TAG}" \
+            apps/mobile/build/app/outputs/flutter-apk/app-release.apk \
+            apps/mobile/build/app/outputs/flutter-apk/app-release.apk.sha256 \
+            --clobber

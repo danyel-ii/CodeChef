@@ -1,0 +1,15 @@
+name: pack_core_hash
+publish_to: none
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+  crypto: ^3.0.7
+  execution_protocol:
+    path: ../execution_protocol
+  pack_learning_content:
+    path: ../pack_learning_content
+
+dev_dependencies:
+  lints: ^5.1.1
+  test: ^1.25.15

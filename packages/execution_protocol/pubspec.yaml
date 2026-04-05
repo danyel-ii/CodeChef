@@ -1,0 +1,16 @@
+name: execution_protocol
+publish_to: none
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  meta: ^1.16.0
+
+dev_dependencies:
+  build_runner: ^2.4.13
+  freezed: ^2.5.7
+  json_serializable: ^6.9.0
+  lints: ^5.1.1
+  test: ^1.25.15

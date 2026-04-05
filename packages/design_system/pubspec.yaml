@@ -1,0 +1,16 @@
+name: design_system
+publish_to: none
+environment:
+  sdk: ^3.4.0
+  flutter: '>=3.22.0'
+
+dependencies:
+  execution_protocol:
+    path: ../execution_protocol
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0

@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: execution_protocol,pack_learning_content
+dependency_overrides:
+  execution_protocol:
+    path: ../execution_protocol
+  pack_learning_content:
+    path: ../pack_learning_content

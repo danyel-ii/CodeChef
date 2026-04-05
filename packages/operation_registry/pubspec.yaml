@@ -1,0 +1,14 @@
+name: operation_registry
+publish_to: none
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+  execution_protocol:
+    path: ../execution_protocol
+
+dev_dependencies:
+  lints: ^5.1.1
+  pack_core_text:
+    path: ../pack_core_text
+  test: ^1.25.15

@@ -1,0 +1,46 @@
+name: mobile_recipe_lab_mobile
+publish_to: none
+version: 0.1.0+1
+environment:
+  sdk: ^3.4.0
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  go_router: ^14.8.1
+  google_fonts: ^6.3.1
+  app_core:
+    path: ../../packages/app_core
+  design_system:
+    path: ../../packages/design_system
+  execution_protocol:
+    path: ../../packages/execution_protocol
+  executor_broker:
+    path: ../../packages/executor_broker
+  pack_core_format:
+    path: ../../packages/pack_core_format
+  pack_core_cipher:
+    path: ../../packages/pack_core_cipher
+  pack_core_hash:
+    path: ../../packages/pack_core_hash
+  pack_core_text:
+    path: ../../packages/pack_core_text
+  pack_learning_content:
+    path: ../../packages/pack_learning_content
+  path_provider: ^2.1.5
+  persistence_drift:
+    path: ../../packages/persistence_drift
+  recipe_domain:
+    path: ../../packages/recipe_domain
+  operation_registry:
+    path: ../../packages/operation_registry
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

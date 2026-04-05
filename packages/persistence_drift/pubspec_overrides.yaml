@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: execution_protocol,recipe_domain
+dependency_overrides:
+  execution_protocol:
+    path: ../execution_protocol
+  recipe_domain:
+    path: ../recipe_domain

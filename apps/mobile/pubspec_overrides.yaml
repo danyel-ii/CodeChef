@@ -1,0 +1,28 @@
+# melos_managed_dependency_overrides: app_core,design_system,execution_protocol,executor_broker,executor_isolate,operation_registry,recipe_domain,pack_core_format,pack_core_hash,pack_core_text,pack_learning_content,persistence_drift,pack_core_cipher
+dependency_overrides:
+  app_core:
+    path: ../../packages/app_core
+  design_system:
+    path: ../../packages/design_system
+  execution_protocol:
+    path: ../../packages/execution_protocol
+  executor_broker:
+    path: ../../packages/executor_broker
+  executor_isolate:
+    path: ../../packages/executor_isolate
+  operation_registry:
+    path: ../../packages/operation_registry
+  pack_core_cipher:
+    path: ../../packages/pack_core_cipher
+  pack_core_format:
+    path: ../../packages/pack_core_format
+  pack_core_hash:
+    path: ../../packages/pack_core_hash
+  pack_core_text:
+    path: ../../packages/pack_core_text
+  pack_learning_content:
+    path: ../../packages/pack_learning_content
+  persistence_drift:
+    path: ../../packages/persistence_drift
+  recipe_domain:
+    path: ../../packages/recipe_domain

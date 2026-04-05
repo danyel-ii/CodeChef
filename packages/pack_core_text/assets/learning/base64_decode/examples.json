@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Decode simple text",
+    "input": "SGVsbG8=",
+    "params": {
+      "treatOutputAs": "text"
+    },
+    "expectedOutputText": "Hello"
+  }
+]

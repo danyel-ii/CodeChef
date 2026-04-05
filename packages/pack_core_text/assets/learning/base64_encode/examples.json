@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Encode simple text",
+    "input": "Hello",
+    "params": {
+      "lineBreakInterval": 0
+    },
+    "expectedOutputText": "SGVsbG8="
+  }
+]
