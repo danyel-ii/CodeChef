@@ -10,8 +10,8 @@ const List<ParamFieldSpec> xorParams = <ParamFieldSpec>[
     validation: ValidationRuleSet(<ValidationRule>[
       ValidationRule(kind: ValidationRuleKind.minLength, value: 1),
     ]),
-    uiHint: UiHint.singleLineText,
-    secret: false,
+    uiHint: UiHint.secretText,
+    secret: true,
     example: 'key',
   ),
   ParamFieldSpec(

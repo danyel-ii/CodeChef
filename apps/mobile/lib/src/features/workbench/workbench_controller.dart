@@ -253,12 +253,15 @@ class WorkbenchController extends Notifier<WorkbenchState> {
           : state.currentRecipeId!,
       now: now,
     );
-    await store.saveRecipe(recipe);
+    final RecipeDocument persistedRecipe = _stripSecretParamsForPersistence(recipe);
+    await store.saveRecipe(persistedRecipe);
     ref.invalidate(savedRecipesProvider);
     state = state.copyWith(
       currentRecipeId: recipe.recipeId,
       lastRunRecipe: recipe,
-      infoMessage: 'Recipe saved locally.',
+      infoMessage: _hasSecretParams(recipe)
+          ? 'Recipe saved locally. Secret parameters were omitted from storage.'
+          : 'Recipe saved locally.',
       clearError: true,
     );
   }
@@ -552,7 +555,8 @@ class WorkbenchController extends Notifier<WorkbenchState> {
         buffer
           ..writeln('### Parameters')
           ..writeln();
-        for (final entry in record.step.params.entries) {
+        final Map<String, Object?> displayParams = _redactParamsForDisplay(record);
+        for (final entry in displayParams.entries) {
           buffer.writeln('- `${entry.key}`: `${entry.value}`');
         }
         buffer.writeln();
@@ -575,6 +579,57 @@ class WorkbenchController extends Notifier<WorkbenchState> {
       ..writeln('```');
 
     return buffer.toString();
+  }
+
+  RecipeDocument _stripSecretParamsForPersistence(RecipeDocument recipe) {
+    final registry = ref.read(operationRegistryProvider);
+    return recipe.copyWith(
+      steps: recipe.steps.map((RecipeStep step) {
+        final RegisteredOperation registered = registry.resolve(
+          step.operation.id,
+          versionRange: step.operation.versionRange,
+        );
+        final Set<String> secretFields = registered.operation.manifest.params
+            .where((ParamFieldSpec field) => field.secret)
+            .map((ParamFieldSpec field) => field.id)
+            .toSet();
+        if (secretFields.isEmpty) {
+          return step;
+        }
+        final Map<String, Object?> sanitizedParams = Map<String, Object?>.from(step.params)
+          ..removeWhere((String key, Object? value) => secretFields.contains(key));
+        return step.copyWith(params: sanitizedParams);
+      }).toList(growable: false),
+    );
+  }
+
+  bool _hasSecretParams(RecipeDocument recipe) {
+    final registry = ref.read(operationRegistryProvider);
+    for (final RecipeStep step in recipe.steps) {
+      final RegisteredOperation registered = registry.resolve(
+        step.operation.id,
+        versionRange: step.operation.versionRange,
+      );
+      final Set<String> secretFields = registered.operation.manifest.params
+          .where((ParamFieldSpec field) => field.secret)
+          .map((ParamFieldSpec field) => field.id)
+          .toSet();
+      if (step.params.keys.any(secretFields.contains)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  Map<String, Object?> _redactParamsForDisplay(_ExportStepRecord record) {
+    final Set<String> secretFields = record.operation.operation.manifest.params
+        .where((ParamFieldSpec field) => field.secret)
+        .map((ParamFieldSpec field) => field.id)
+        .toSet();
+    return <String, Object?>{
+      for (final MapEntry<String, Object?> entry in record.step.params.entries)
+        entry.key: secretFields.contains(entry.key) ? '<redacted>' : entry.value,
+    };
   }
 }
 

@@ -15,8 +15,8 @@ const List<ParamFieldSpec> vigenereParams = <ParamFieldSpec>[
         message: 'Vigenere keys must contain letters only.',
       ),
     ]),
-    uiHint: UiHint.singleLineText,
-    secret: false,
+    uiHint: UiHint.secretText,
+    secret: true,
     example: 'LEMON',
   ),
   ParamFieldSpec(
