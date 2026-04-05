@@ -3,27 +3,27 @@ import 'package:execution_protocol/execution_protocol.dart';
 import 'learning_refs.dart';
 import 'param_schema.dart';
 
-const OperationManifest xorManifest = OperationManifest(
-  id: 'core.cipher.xor',
+const OperationManifest desManifest = OperationManifest(
+  id: 'core.cipher.des',
   version: '1.0.0',
-  title: 'XOR',
-  shortDescription: 'Applies repeating-key XOR to the input.',
+  title: 'DES',
+  shortDescription: 'Encrypts or decrypts text with legacy DES and PKCS7 padding.',
   category: 'Cipher',
-  tags: <String>['xor', 'cipher', 'repeating-key', 'binary'],
+  tags: <String>['des', 'cipher', 'block', 'legacy', 'ecb'],
   inputKinds: <PayloadKind>[PayloadKind.text],
   outputKinds: <PayloadKind>[PayloadKind.text],
-  params: xorParams,
+  params: desParams,
   capabilities: CapabilitySet(
     deterministic: true,
     reversible: true,
     previewSafe: true,
     supportsLargeInputs: true,
-    supportsStreamingFuture: true,
+    supportsStreamingFuture: false,
     mayProduceBinary: true,
     requiresSecretParams: true,
     educational: true,
   ),
   stability: Stability.stable,
   backendKind: BackendKind.inlineDart,
-  learning: xorLearningRef,
+  learning: desLearningRef,
 );

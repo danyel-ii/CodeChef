@@ -1,6 +1,16 @@
 export 'src/core_cipher_pack.dart';
 export 'src/learning/core_cipher_learning.dart';
+export 'src/operations/aes/operation.dart';
+export 'src/operations/affine/operation.dart';
+export 'src/operations/atbash/operation.dart';
+export 'src/operations/bacon/operation.dart';
 export 'src/operations/caesar/operation.dart';
+export 'src/operations/caesar_box/operation.dart';
+export 'src/operations/des/operation.dart';
+export 'src/operations/rail_fence/operation.dart';
+export 'src/operations/rc4/operation.dart';
 export 'src/operations/rot13/operation.dart';
+export 'src/operations/rot47/operation.dart';
 export 'src/operations/vigenere/operation.dart';
 export 'src/operations/xor/operation.dart';
+export 'src/operations/xor_bruteforce/operation.dart';

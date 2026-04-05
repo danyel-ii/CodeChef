@@ -2,6 +2,28 @@ import 'package:pack_learning_content/pack_learning_content.dart';
 
 const Map<String, OperationLearningContent> coreCipherLearningContent =
     <String, OperationLearningContent>{
+  'core.cipher.atbash': OperationLearningContent(
+    operationId: 'core.cipher.atbash',
+    whatItDoes: 'Mirrors each alphabetic letter so A becomes Z, B becomes Y, and the mapping runs symmetrically across the alphabet.',
+    whenToUse: 'Use for simple classical-cipher demonstrations and for recognizing mirrored substitution patterns.',
+    gotchas: 'Atbash is a fixed classical substitution, not real cryptography. Applying it twice returns the original text.',
+    howItWorks: <String>[
+      'Take one letter at a time from the input text.',
+      'Find how far that letter sits from the start of the alphabet.',
+      'Mirror that distance from the end of the alphabet instead.',
+      'Preserve uppercase and lowercase separately.',
+      'Leave digits, punctuation, and spaces unchanged.',
+    ],
+    relatedOperations: <String>['core.cipher.caesar', 'core.cipher.affine'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'Mirror a greeting',
+        input: 'Hello, World!',
+        params: <String, Object?>{},
+        expectedOutputText: 'Svool, Dliow!',
+      ),
+    ],
+  ),
   'core.cipher.xor': OperationLearningContent(
     operationId: 'core.cipher.xor',
     whatItDoes: 'Applies a repeating-key XOR across the input bytes and renders the result in a chosen format.',
@@ -28,6 +50,32 @@ const Map<String, OperationLearningContent> coreCipherLearningContent =
       ),
     ],
   ),
+  'core.cipher.xor_bruteforce': OperationLearningContent(
+    operationId: 'core.cipher.xor_bruteforce',
+    whatItDoes: 'Tries a range of single-byte XOR keys and ranks the most readable plaintext candidates.',
+    whenToUse: 'Use when you suspect a payload was XORed with a one-byte key and want a shortlist of plausible decodings.',
+    gotchas: 'This does not prove which key is correct. It only scores candidates heuristically, so binary or non-English plaintext can rank poorly.',
+    howItWorks: <String>[
+      'Decode the cipher text into raw bytes using the selected input format.',
+      'Choose a single-byte key range, usually 0 through 255.',
+      'XOR every byte in the payload with each candidate key byte.',
+      'Score the decoded text based on how printable and language-like it looks.',
+      'Sort the candidates and show the highest-scoring results first.',
+    ],
+    relatedOperations: <String>['core.cipher.xor', 'core.text.hex.decode'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'Recover a single-byte XOR candidate',
+        input: '2a272e2e2d',
+        params: <String, Object?>{
+          'inputFormat': 'hex',
+          'candidateCount': 3,
+          'keyStart': 0,
+          'keyEnd': 255,
+        },
+      ),
+    ],
+  ),
   'core.cipher.rot13': OperationLearningContent(
     operationId: 'core.cipher.rot13',
     whatItDoes: 'Rotates each alphabetic character by 13 places, leaving other characters unchanged.',
@@ -47,6 +95,28 @@ const Map<String, OperationLearningContent> coreCipherLearningContent =
         input: 'Hello World',
         params: <String, Object?>{},
         expectedOutputText: 'Uryyb Jbeyq',
+      ),
+    ],
+  ),
+  'core.cipher.rot47': OperationLearningContent(
+    operationId: 'core.cipher.rot47',
+    whatItDoes: 'Rotates printable ASCII characters by 47 positions across the 94-character visible range.',
+    whenToUse: 'Use for toy examples involving punctuation-heavy text or when comparing ROT13 with a printable-ASCII variant.',
+    gotchas: 'ROT47 is only a reversible toy transform. It works on printable ASCII only and is not secure encryption.',
+    howItWorks: <String>[
+      'Walk through the text one character at a time.',
+      'If the character is inside the printable ASCII range from ! to ~, map it into a 0-93 offset.',
+      'Add 47 to that offset and wrap around modulo 94.',
+      'Convert the wrapped offset back into a printable ASCII character.',
+      'Leave spaces, tabs, and other non-printable characters unchanged.',
+    ],
+    relatedOperations: <String>['core.cipher.rot13'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'Rotate printable ASCII',
+        input: 'Hello!',
+        params: <String, Object?>{},
+        expectedOutputText: 'w6==@P',
       ),
     ],
   ),
@@ -72,6 +142,98 @@ const Map<String, OperationLearningContent> coreCipherLearningContent =
       ),
     ],
   ),
+  'core.cipher.caesar_box': OperationLearningContent(
+    operationId: 'core.cipher.caesar_box',
+    whatItDoes: 'Writes text into a fixed-width rectangle row by row and then reads it back out column by column.',
+    whenToUse: 'Use for learning simple transposition ciphers and for comparing substitution ciphers with box-based rearrangements.',
+    gotchas: 'Caesar Box changes the order of characters but does not alter the characters themselves. You need the same column count to reverse it correctly.',
+    howItWorks: <String>[
+      'Choose how many columns the message box should have.',
+      'Write the plaintext left to right across each row until the box is filled as far as the message allows.',
+      'For encoding, read the box top to bottom one column at a time.',
+      'For decoding, rebuild the uneven column lengths from the message length and chosen column count.',
+      'Read the reconstructed box row by row to recover the original text.',
+    ],
+    relatedOperations: <String>['core.cipher.rail_fence', 'core.cipher.caesar'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'Encode with 5 columns',
+        input: 'WEAREDISCOVEREDFLEEATONCE',
+        params: <String, Object?>{'columns': 5, 'mode': 'encode'},
+        expectedOutputText: 'WDVFTEIELOASRENRCEECEODAE',
+      ),
+    ],
+  ),
+  'core.cipher.rail_fence': OperationLearningContent(
+    operationId: 'core.cipher.rail_fence',
+    whatItDoes: 'Writes text in a zig-zag pattern across several rails and then reads each rail row by row.',
+    whenToUse: 'Use for learning classical transposition ciphers and for recognizing zig-zag rearrangements.',
+    gotchas: 'Rail Fence reorders characters rather than substituting them. You must know the rail count to decode it correctly.',
+    howItWorks: <String>[
+      'Choose the number of rails.',
+      'Write the message diagonally down and up across those rails in a repeating zig-zag.',
+      'For encoding, read the first rail left to right, then the second, and so on.',
+      'For decoding, reconstruct where each character would sit in that zig-zag pattern.',
+      'Read the reconstructed zig-zag path back in traversal order to recover the message.',
+    ],
+    relatedOperations: <String>['core.cipher.atbash', 'core.cipher.caesar'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'Encode with 3 rails',
+        input: 'WEAREDISCOVEREDFLEEATONCE',
+        params: <String, Object?>{'rails': 3, 'mode': 'encode'},
+        expectedOutputText: 'WECRLTEERDSOEEFEAOCAIVDEN',
+      ),
+    ],
+  ),
+  'core.cipher.affine': OperationLearningContent(
+    operationId: 'core.cipher.affine',
+    whatItDoes: 'Transforms each letter with the affine formula a*x+b modulo 26.',
+    whenToUse: 'Use for learning substitution ciphers that combine multiplication and shifting over alphabet indexes.',
+    gotchas: 'The multiplier a must be coprime with 26 or the cipher cannot be reversed. This is still a classical toy cipher, not modern cryptography.',
+    howItWorks: <String>[
+      'Convert each letter into a 0-25 alphabet index.',
+      'For encoding, multiply by a and add b, then reduce modulo 26.',
+      'For decoding, subtract b and multiply by the modular inverse of a.',
+      'Map the resulting index back to a letter, preserving case.',
+      'Leave non-letter characters unchanged.',
+    ],
+    relatedOperations: <String>['core.cipher.caesar', 'core.cipher.atbash'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'Affine encode',
+        input: 'AFFINECIPHER',
+        params: <String, Object?>{'a': 5, 'b': 8, 'mode': 'encode'},
+        expectedOutputText: 'IHHWVCSWFRCP',
+      ),
+    ],
+  ),
+  'core.cipher.bacon': OperationLearningContent(
+    operationId: 'core.cipher.bacon',
+    whatItDoes: 'Encodes letters as five-character groups made from A and B.',
+    whenToUse: 'Use for steganography history, classical cipher lessons, and explaining how letters can be represented as fixed-width symbols.',
+    gotchas: 'Baconian encodings are symbol mappings, not secure encryption. The classical 24-letter alphabet merges I/J and U/V.',
+    howItWorks: <String>[
+      'Choose whether to use the modern 26-letter alphabet or the classical 24-letter variant.',
+      'Normalize letters to uppercase and merge J with I and V with U when using the classical variant.',
+      'Convert each letter into a five-bit value.',
+      'Render 0 bits as A and 1 bits as B.',
+      'For decoding, read the A/B stream back in groups of five and map each group to a letter.',
+    ],
+    relatedOperations: <String>['core.cipher.atbash'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'Encode HELLO',
+        input: 'HELLO',
+        params: <String, Object?>{
+          'mode': 'encode',
+          'alphabetVariant': 'modern26',
+          'groupOutput': true,
+        },
+        expectedOutputText: 'AABBB AABAA ABABB ABABB ABBBA',
+      ),
+    ],
+  ),
   'core.cipher.vigenere': OperationLearningContent(
     operationId: 'core.cipher.vigenere',
     whatItDoes: 'Applies a repeating alphabetic key to shift each letter by a varying amount.',
@@ -91,6 +253,88 @@ const Map<String, OperationLearningContent> coreCipherLearningContent =
         input: 'ATTACKATDAWN',
         params: <String, Object?>{'key': 'LEMON', 'mode': 'encode'},
         expectedOutputText: 'LXFOPVEFRNHR',
+      ),
+    ],
+  ),
+  'core.cipher.rc4': OperationLearningContent(
+    operationId: 'core.cipher.rc4',
+    whatItDoes: 'Applies the RC4 stream cipher to the input bytes and renders the keystream-mixed result in a chosen format.',
+    whenToUse: 'Use for legacy protocol analysis, historical examples, and for understanding how stream ciphers combine a key stream with plaintext bytes.',
+    gotchas: 'RC4 is legacy cryptography and should not be used for new secure designs. Reusing a key with RC4 is unsafe, and this app does not add message authentication.',
+    howItWorks: <String>[
+      'Decode the key into bytes and initialize the RC4 state permutation.',
+      'Run the key-scheduling algorithm so the permutation depends on the key bytes.',
+      'Generate one pseudo-random keystream byte at a time from the evolving state.',
+      'XOR each keystream byte with the corresponding input byte.',
+      'Render the resulting bytes as text, hex, or Base64.',
+    ],
+    relatedOperations: <String>['core.cipher.xor', 'core.text.base64.encode'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'RC4 known vector',
+        input: 'Plaintext',
+        params: <String, Object?>{
+          'key': 'Key',
+          'keyFormat': 'text',
+          'inputFormat': 'text',
+          'outputFormat': 'hex',
+        },
+        expectedOutputText: 'bbf316e8d940af0ad3',
+      ),
+    ],
+  ),
+  'core.cipher.aes': OperationLearningContent(
+    operationId: 'core.cipher.aes',
+    whatItDoes: 'Encrypts or decrypts bytes with AES in CBC mode using PKCS7 padding.',
+    whenToUse: 'Use for learning block ciphers, key sizes, IV handling, and the difference between classical ciphers and modern symmetric cryptography.',
+    gotchas: 'AES is real cryptography, but this operation is educational coverage, not a full secure messaging scheme. CBC mode alone does not provide authenticity, so tampering can go undetected.',
+    howItWorks: <String>[
+      'Decode the key and IV into raw bytes.',
+      'Split plaintext into 16-byte blocks and add PKCS7 padding during encryption.',
+      'For encryption, XOR each plaintext block with the previous ciphertext block or IV, then run AES on it.',
+      'For decryption, run AES inverse on each block and XOR the result with the previous ciphertext block or IV.',
+      'Render the final bytes in the selected output format after encryption or decryption completes.',
+    ],
+    relatedOperations: <String>['core.cipher.des', 'core.text.base64.encode'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'AES-CBC encrypt',
+        input: 'Attack at dawn',
+        params: <String, Object?>{
+          'mode': 'encrypt',
+          'key': '00112233445566778899aabbccddeeff',
+          'keyFormat': 'hex',
+          'iv': '0102030405060708090a0b0c0d0e0f10',
+          'ivFormat': 'hex',
+          'inputFormat': 'text',
+          'outputFormat': 'base64',
+        },
+      ),
+    ],
+  ),
+  'core.cipher.des': OperationLearningContent(
+    operationId: 'core.cipher.des',
+    whatItDoes: 'Encrypts or decrypts text with the legacy DES block cipher and PKCS7 padding.',
+    whenToUse: 'Use for historical crypto learning, legacy protocol inspection, and comparing modern AES with obsolete DES.',
+    gotchas: 'DES is obsolete and insecure for modern protection. This operation is included for analysis and education only, and this implementation is intentionally limited legacy coverage rather than a modern authenticated design.',
+    howItWorks: <String>[
+      'Take an 8-character DES key and expand it into DES round keys.',
+      'Split plaintext into 8-byte blocks and add PKCS7 padding during encryption.',
+      'Run each block through the DES Feistel rounds for encryption or decryption.',
+      'Render the resulting cipher text as raw text or Base64, depending on the selected output format.',
+      'Reverse the same process during decryption and remove PKCS7 padding at the end.',
+    ],
+    relatedOperations: <String>['core.cipher.aes', 'core.cipher.rc4'],
+    examples: <LearningExample>[
+      LearningExample(
+        title: 'DES encrypt',
+        input: 'Open sesame',
+        params: <String, Object?>{
+          'mode': 'encrypt',
+          'key': 'Secr3tK!',
+          'inputFormat': 'text',
+          'outputFormat': 'base64',
+        },
       ),
     ],
   ),

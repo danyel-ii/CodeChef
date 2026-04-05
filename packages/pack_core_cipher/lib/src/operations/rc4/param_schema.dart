@@ -1,0 +1,53 @@
+import 'package:execution_protocol/execution_protocol.dart';
+
+const List<ParamFieldSpec> rc4Params = <ParamFieldSpec>[
+  ParamFieldSpec(
+    id: 'key',
+    label: 'Key',
+    description: 'Secret RC4 key material.',
+    type: ParamType.string,
+    required: true,
+    validation: ValidationRuleSet(<ValidationRule>[
+      ValidationRule(kind: ValidationRuleKind.minLength, value: 1),
+    ]),
+    uiHint: UiHint.secretText,
+    secret: true,
+    example: 'Key',
+  ),
+  ParamFieldSpec(
+    id: 'keyFormat',
+    label: 'Key Format',
+    description: 'How the RC4 key string should be decoded into bytes.',
+    type: ParamType.enumType,
+    required: true,
+    defaultValue: 'text',
+    allowedValues: <Object?>['text', 'hex', 'base64'],
+    validation: ValidationRuleSet.none(),
+    uiHint: UiHint.segmentedChoice,
+    secret: false,
+  ),
+  ParamFieldSpec(
+    id: 'inputFormat',
+    label: 'Input Format',
+    description: 'How the incoming payload should be interpreted before RC4 is applied.',
+    type: ParamType.enumType,
+    required: true,
+    defaultValue: 'text',
+    allowedValues: <Object?>['text', 'hex', 'base64'],
+    validation: ValidationRuleSet.none(),
+    uiHint: UiHint.segmentedChoice,
+    secret: false,
+  ),
+  ParamFieldSpec(
+    id: 'outputFormat',
+    label: 'Output Format',
+    description: 'How the transformed bytes should be rendered.',
+    type: ParamType.enumType,
+    required: true,
+    defaultValue: 'hex',
+    allowedValues: <Object?>['text', 'hex', 'base64'],
+    validation: ValidationRuleSet.none(),
+    uiHint: UiHint.segmentedChoice,
+    secret: false,
+  ),
+];

@@ -6,8 +6,10 @@ environment:
 dependencies:
   execution_protocol:
     path: ../execution_protocol
+  dart_3des: ^1.0.1
   pack_learning_content:
     path: ../pack_learning_content
+  pointycastle: ^4.0.0
 
 dev_dependencies:
   lints: ^5.1.1

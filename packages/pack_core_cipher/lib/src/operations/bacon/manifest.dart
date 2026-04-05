@@ -3,27 +3,27 @@ import 'package:execution_protocol/execution_protocol.dart';
 import 'learning_refs.dart';
 import 'param_schema.dart';
 
-const OperationManifest xorManifest = OperationManifest(
-  id: 'core.cipher.xor',
+const OperationManifest baconManifest = OperationManifest(
+  id: 'core.cipher.bacon',
   version: '1.0.0',
-  title: 'XOR',
-  shortDescription: 'Applies repeating-key XOR to the input.',
+  title: 'Bacon Cipher',
+  shortDescription: 'Maps each letter to a five-character A/B pattern.',
   category: 'Cipher',
-  tags: <String>['xor', 'cipher', 'repeating-key', 'binary'],
+  tags: <String>['bacon', 'cipher', 'classical', 'steganography'],
   inputKinds: <PayloadKind>[PayloadKind.text],
   outputKinds: <PayloadKind>[PayloadKind.text],
-  params: xorParams,
+  params: baconParams,
   capabilities: CapabilitySet(
     deterministic: true,
     reversible: true,
     previewSafe: true,
     supportsLargeInputs: true,
     supportsStreamingFuture: true,
-    mayProduceBinary: true,
-    requiresSecretParams: true,
+    mayProduceBinary: false,
+    requiresSecretParams: false,
     educational: true,
   ),
   stability: Stability.stable,
   backendKind: BackendKind.inlineDart,
-  learning: xorLearningRef,
+  learning: baconLearningRef,
 );

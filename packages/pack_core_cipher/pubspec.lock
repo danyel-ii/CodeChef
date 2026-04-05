@@ -81,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.7"
+  dart_3des:
+    dependency: "direct main"
+    description:
+      name: dart_3des
+      sha256: d8d1899aa2104a691cc586ea62a78d5ba1589afd72d8bcecc4c4106d0b7de607
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   execution_protocol:
     dependency: "direct main"
     description:
@@ -223,6 +231,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  pointycastle:
+    dependency: "direct main"
+    description:
+      name: pointycastle
+      sha256: "92aa3841d083cc4b0f4709b5c74fd6409a3e6ba833ffc7dc6a8fee096366acf5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   pool:
     dependency: transitive
     description:

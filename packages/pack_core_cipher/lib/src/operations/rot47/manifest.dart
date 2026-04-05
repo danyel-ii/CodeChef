@@ -1,29 +1,28 @@
 import 'package:execution_protocol/execution_protocol.dart';
 
 import 'learning_refs.dart';
-import 'param_schema.dart';
 
-const OperationManifest xorManifest = OperationManifest(
-  id: 'core.cipher.xor',
+const OperationManifest rot47Manifest = OperationManifest(
+  id: 'core.cipher.rot47',
   version: '1.0.0',
-  title: 'XOR',
-  shortDescription: 'Applies repeating-key XOR to the input.',
+  title: 'ROT47',
+  shortDescription: 'Rotates printable ASCII characters by 47 positions.',
   category: 'Cipher',
-  tags: <String>['xor', 'cipher', 'repeating-key', 'binary'],
+  tags: <String>['rot47', 'cipher', 'ascii', 'classical'],
   inputKinds: <PayloadKind>[PayloadKind.text],
   outputKinds: <PayloadKind>[PayloadKind.text],
-  params: xorParams,
+  params: <ParamFieldSpec>[],
   capabilities: CapabilitySet(
     deterministic: true,
     reversible: true,
     previewSafe: true,
     supportsLargeInputs: true,
     supportsStreamingFuture: true,
-    mayProduceBinary: true,
-    requiresSecretParams: true,
+    mayProduceBinary: false,
+    requiresSecretParams: false,
     educational: true,
   ),
   stability: Stability.stable,
   backendKind: BackendKind.inlineDart,
-  learning: xorLearningRef,
+  learning: rot47LearningRef,
 );

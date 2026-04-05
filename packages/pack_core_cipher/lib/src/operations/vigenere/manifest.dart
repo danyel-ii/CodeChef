@@ -20,7 +20,7 @@ const OperationManifest vigenereManifest = OperationManifest(
     supportsLargeInputs: true,
     supportsStreamingFuture: true,
     mayProduceBinary: false,
-    requiresSecretParams: false,
+    requiresSecretParams: true,
     educational: true,
   ),
   stability: Stability.stable,
