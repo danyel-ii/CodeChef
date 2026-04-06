@@ -21,6 +21,7 @@ Example release page:
 7. After install, bundled PDF decks are available in-app:
    - `Settings > Open Blueprint PDF`
    - `Learn > Base64 Encode / Hex Encode / Hex Decode / XOR > Open PDF`
+8. PDF decks render inside the app, so no external PDF app is required for the bundled decks.
 
 ## Release workflow
 
@@ -54,6 +55,7 @@ The output file is at:
 The current launcher icon source is:
 
 - [app_icon_master.png](/Users/danyel-ii/CodeChef/apps/mobile/assets/icon/app_icon_master.png)
+- [app_icon_source_square.png](/Users/danyel-ii/CodeChef/apps/mobile/assets/icon/app_icon_source_square.png)
 
 Android launcher icons and web icons are generated from that master asset.
 
@@ -67,4 +69,4 @@ The shipped APK includes these bundled decks:
 - [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/inside_hex_decode.pdf)
 - [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_xor_transform.pdf)
 
-The app copies each PDF into app-local storage on first open and launches it through the device PDF handler.
+The app renders these bundled PDFs directly inside the mobile interface.

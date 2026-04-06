@@ -29,6 +29,7 @@ dependencies:
     path: ../../packages/pack_core_text
   pack_learning_content:
     path: ../../packages/pack_learning_content
+  pdfrx: ^2.2.24
   path_provider: ^2.1.5
   persistence_drift:
     path: ../../packages/persistence_drift
@@ -36,8 +37,6 @@ dependencies:
     path: ../../packages/recipe_domain
   operation_registry:
     path: ../../packages/operation_registry
-  open_filex: ^4.7.0
-  path: ^1.9.1
 
 dev_dependencies:
   flutter_test:

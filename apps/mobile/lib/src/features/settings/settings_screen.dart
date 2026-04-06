@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_recipe_lab_mobile/src/features/documents/asset_pdf_launcher.dart';
 import 'package:mobile_recipe_lab_mobile/src/features/documents/pdf_deck_catalog.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -82,7 +82,10 @@ class SettingsScreen extends StatelessWidget {
                                 'Open the bundled CodeChef blueprint slide deck from inside the app.',
                             actionLabel: 'Open Blueprint PDF',
                             onAction: () async {
-                              await _openDeck(context, aboutBlueprintDeck);
+                              if (!context.mounted) {
+                                return;
+                              }
+                              context.push('/documents/pdf', extra: aboutBlueprintDeck);
                             },
                           ),
                         ],
@@ -96,19 +99,6 @@ class SettingsScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _openDeck(BuildContext context, PdfDeck deck) async {
-    try {
-      await const AssetPdfLauncher().openDeck(deck);
-    } catch (error) {
-      if (!context.mounted) {
-        return;
-      }
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(error.toString())),
-      );
-    }
   }
 }
 

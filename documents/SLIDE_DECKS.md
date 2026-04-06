@@ -16,6 +16,7 @@ CodeChef ships bundled PDF slide decks for product orientation and selected lear
 
 - Open `Settings` and tap `Open Blueprint PDF` to launch the CodeChef blueprint deck.
 - Open `Learn`, choose a supported operation, and tap `Open PDF` to launch its linked deck.
+- The viewer is in-app, so bundled decks no longer depend on an external PDF application.
 
 ## Storage
 

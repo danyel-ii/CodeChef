@@ -28,6 +28,7 @@ In the app:
 
 1. Open `Settings` and tap `Open Blueprint PDF` for the about/blueprint deck.
 2. Open `Learn`, choose a supported operation, and tap `Open PDF` for its linked slide deck.
+3. PDF decks now open inside the app rather than depending on an external PDF handler.
 
 The maintained deck folder is:
 

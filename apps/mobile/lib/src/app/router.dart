@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile_recipe_lab_mobile/src/features/documents/pdf_deck_catalog.dart';
+import 'package:mobile_recipe_lab_mobile/src/features/documents/pdf_viewer_screen.dart';
 import 'package:mobile_recipe_lab_mobile/src/features/home/home_screen.dart';
 import 'package:mobile_recipe_lab_mobile/src/features/library/library_screen.dart';
 import 'package:mobile_recipe_lab_mobile/src/features/settings/settings_screen.dart';
@@ -73,6 +75,22 @@ final goRouterProvider = Provider<GoRouter>((Ref ref) {
           ),
         ],
       ),
+      GoRoute(
+        path: '/documents/pdf',
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          final PdfDeck? deck = state.extra as PdfDeck?;
+          if (deck == null) {
+            return _buildPage(
+              key: state.pageKey,
+              child: const _MissingPdfScreen(),
+            );
+          }
+          return _buildPage(
+            key: state.pageKey,
+            child: PdfViewerScreen(deck: deck),
+          );
+        },
+      ),
     ],
   );
 });
@@ -106,6 +124,19 @@ Page<void> _buildPage({
       );
     },
   );
+}
+
+class _MissingPdfScreen extends StatelessWidget {
+  const _MissingPdfScreen();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text('PDF deck not found.'),
+      ),
+    );
+  }
 }
 
 class AppScaffold extends StatelessWidget {

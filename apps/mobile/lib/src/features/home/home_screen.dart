@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_recipe_lab_mobile/src/features/documents/asset_pdf_launcher.dart';
 import 'package:mobile_recipe_lab_mobile/src/features/documents/pdf_deck_catalog.dart';
 import 'package:mobile_recipe_lab_mobile/src/features/workbench/workbench_controller.dart';
 import 'package:operation_registry/operation_registry.dart';
@@ -509,17 +508,8 @@ class _LearningDeckCard extends StatelessWidget {
               backgroundColor: const Color(0xFF171311),
               foregroundColor: const Color(0xFFF4F0E8),
             ),
-            onPressed: () async {
-              try {
-                await const AssetPdfLauncher().openDeck(deck);
-              } catch (error) {
-                if (!context.mounted) {
-                  return;
-                }
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(error.toString())),
-                );
-              }
+            onPressed: () {
+              context.push('/documents/pdf', extra: deck);
             },
             child: const Text('Open PDF'),
           ),
