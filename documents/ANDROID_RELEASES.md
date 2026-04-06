@@ -17,7 +17,7 @@ Example release page:
 3. Open the downloaded file.
 4. Allow installation from that source if Android prompts for it.
 5. Install the app.
-6. Confirm the installed app uses the current [CodeChef icon](/Users/danyel-ii/CodeChef/apps/mobile/assets/icon/app_icon_master.png).
+6. Confirm the installed app uses the current [Code Chef icon](/Users/danyel-ii/CodeChef/apps/mobile/assets/icon/app_icon_master.png).
 7. After install, bundled PDF decks are available in-app:
    - `Settings > Open Blueprint PDF`
    - `Learn > Base64 Encode / Hex Encode / Hex Decode / XOR > Open PDF`
@@ -63,7 +63,7 @@ Android launcher icons and web icons are generated from that master asset.
 
 The shipped APK includes these bundled decks:
 
-- [CodeChef Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
+- [Code Chef Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
 - [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
 - [Base64 Decoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_decoding_mechanics.pdf)
 - [Hexadecimal Encoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)

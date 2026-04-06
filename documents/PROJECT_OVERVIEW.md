@@ -1,8 +1,8 @@
 # Project Overview
 
-## What CodeChef is
+## What Code Chef is
 
-CodeChef is a local-first mobile recipe lab for data transformation and learning.
+Code Chef is a local-first mobile recipe lab for data transformation and learning.
 
 The app combines two goals:
 
@@ -43,7 +43,7 @@ It is built as a Flutter app backed by modular Dart packages for domain models, 
 ### Settings
 
 - View app-facing product context and current package scope
-- Open the bundled CodeChef blueprint PDF
+- Open the bundled Code Chef blueprint PDF
 
 ## Installed packs
 

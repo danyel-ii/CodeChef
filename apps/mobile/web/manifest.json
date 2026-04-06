@@ -1,11 +1,11 @@
 {
-    "name": "CodeChef",
-    "short_name": "CodeChef",
+    "name": "Code Chef",
+    "short_name": "Code Chef",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#171311",
     "theme_color": "#171311",
-    "description": "CodeChef is a touch-first mobile recipe lab for transformation workflows and learning.",
+    "description": "Code Chef is a touch-first mobile recipe lab for transformation workflows and learning.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

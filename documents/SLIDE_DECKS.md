@@ -1,11 +1,11 @@
 # Slide Decks
 
-CodeChef ships bundled PDF slide decks for product orientation and selected learning modules.
+Code Chef ships bundled PDF slide decks for product orientation and selected learning modules.
 
 ## Included Decks
 
 - About / Blueprint
-  - [CodeChef Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
+  - [Code Chef Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
 - Operation Learning
   - [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
   - [Base64 Decoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_decoding_mechanics.pdf)
@@ -20,7 +20,7 @@ CodeChef ships bundled PDF slide decks for product orientation and selected lear
 
 ## In-App Access
 
-- Open `Settings` and tap `Open Blueprint PDF` to launch the CodeChef blueprint deck.
+- Open `Settings` and tap `Open Blueprint PDF` to launch the Code Chef blueprint deck.
 - Open `Learn`, choose a supported operation, and tap `Open PDF` to launch its linked deck.
 - The viewer is in-app, so bundled decks no longer depend on an external PDF application.
 

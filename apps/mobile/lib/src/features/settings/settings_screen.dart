@@ -79,7 +79,7 @@ class SettingsScreen extends StatelessWidget {
                             textColor: const Color(0xFF171311),
                             title: 'ABOUT',
                             body:
-                                'Open the bundled CodeChef blueprint slide deck from inside the app.',
+                                'Open the bundled Code Chef blueprint slide deck from inside the app.',
                             actionLabel: 'Open Blueprint PDF',
                             onAction: () async {
                               if (!context.mounted) {

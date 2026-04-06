@@ -2,7 +2,7 @@
 
 ## Summary
 
-CodeChef already functions as more than a transformation utility. In its current form, it is a practical learning app for encodings, formatting tools, hashes, and introductory ciphers because it connects execution, examples, and explanation inside the same flow.
+Code Chef already functions as more than a transformation utility. In its current form, it is a practical learning app for encodings, formatting tools, hashes, and introductory ciphers because it connects execution, examples, and explanation inside the same flow.
 
 The strongest part of the product is that users do not need to choose between "doing the task" and "understanding the task." They can build a recipe, inspect the output, then open the same operation in Learn and see why the step exists and how it works.
 
@@ -158,7 +158,7 @@ This is partly addressed in the content and recent secret-handling hardening, bu
 
 ## Overall assessment
 
-CodeChef is already credible as a learning app in the following form:
+Code Chef is already credible as a learning app in the following form:
 
 - an interactive mobile lab for practical transformation concepts
 - a guided reference for common text and format operations

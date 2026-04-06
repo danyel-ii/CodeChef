@@ -13,7 +13,7 @@ class PdfDeck {
 }
 
 const PdfDeck aboutBlueprintDeck = PdfDeck(
-  title: 'CodeChef Blueprint',
+  title: 'Code Chef Blueprint',
   assetPath: 'assets/pdfs/about/codechef_blueprint.pdf',
   repoPath: 'apps/mobile/assets/pdfs/about/codechef_blueprint.pdf',
   description: 'Blueprint slide deck for the app vision, architecture, and product framing.',

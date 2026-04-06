@@ -1,6 +1,6 @@
 # Documents
 
-This folder contains product-facing documentation for the CodeChef app.
+This folder contains product-facing documentation for the Code Chef app.
 
 ## Contents
 
