@@ -2,7 +2,7 @@
 
 ## Slide deck
 
-- [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/The_XOR_Transform.pdf)
+ - [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_xor_transform.pdf)
 
 ## What it is
 

@@ -11,10 +11,10 @@ This folder is the source of truth for bundled slide-deck PDFs shipped with the 
 
 ## Current operation deck mapping
 
-- `Base64_Deconstructed.pdf` -> `core.text.base64.encode`
+- `base64_deconstructed.pdf` -> `core.text.base64.encode`
 - `hexadecimal_encoding_mechanics.pdf` -> `core.text.hex.encode`
-- `Inside_Hex_Decode.pdf` -> `core.text.hex.decode`
-- `The_XOR_Transform.pdf` -> `core.cipher.xor`
+- `inside_hex_decode.pdf` -> `core.text.hex.decode`
+- `the_xor_transform.pdf` -> `core.cipher.xor`
 
 ## Update workflow
 

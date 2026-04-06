@@ -22,8 +22,8 @@ const PdfDeck aboutBlueprintDeck = PdfDeck(
 const Map<String, PdfDeck> operationLearningDecks = <String, PdfDeck>{
   'core.text.base64.encode': PdfDeck(
     title: 'Base64 Deconstructed',
-    assetPath: 'assets/pdfs/operations/Base64_Deconstructed.pdf',
-    repoPath: 'apps/mobile/assets/pdfs/operations/Base64_Deconstructed.pdf',
+    assetPath: 'assets/pdfs/operations/base64_deconstructed.pdf',
+    repoPath: 'apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf',
     description: 'Visual deck explaining how bytes become 6-bit groups and Base64 characters.',
   ),
   'core.text.hex.encode': PdfDeck(
@@ -34,14 +34,14 @@ const Map<String, PdfDeck> operationLearningDecks = <String, PdfDeck>{
   ),
   'core.text.hex.decode': PdfDeck(
     title: 'Inside Hex Decode',
-    assetPath: 'assets/pdfs/operations/Inside_Hex_Decode.pdf',
-    repoPath: 'apps/mobile/assets/pdfs/operations/Inside_Hex_Decode.pdf',
+    assetPath: 'assets/pdfs/operations/inside_hex_decode.pdf',
+    repoPath: 'apps/mobile/assets/pdfs/operations/inside_hex_decode.pdf',
     description: 'Visual walkthrough of how hex pairs are converted back into raw bytes.',
   ),
   'core.cipher.xor': PdfDeck(
     title: 'The XOR Transform',
-    assetPath: 'assets/pdfs/operations/The_XOR_Transform.pdf',
-    repoPath: 'apps/mobile/assets/pdfs/operations/The_XOR_Transform.pdf',
+    assetPath: 'assets/pdfs/operations/the_xor_transform.pdf',
+    repoPath: 'apps/mobile/assets/pdfs/operations/the_xor_transform.pdf',
     description: 'Slide deck explaining repeating-key XOR, byte-wise reversibility, and why XOR is educational rather than modern secure crypto.',
   ),
 };

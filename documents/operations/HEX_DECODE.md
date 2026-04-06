@@ -2,7 +2,7 @@
 
 ## Slide deck
 
-- [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/Inside_Hex_Decode.pdf)
+ - [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/inside_hex_decode.pdf)
 
 ## What it is
 

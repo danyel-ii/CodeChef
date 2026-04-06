@@ -7,10 +7,10 @@ CodeChef ships bundled PDF slide decks for product orientation and selected lear
 - About / Blueprint
   - [CodeChef Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
 - Operation Learning
-  - [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/Base64_Deconstructed.pdf)
+  - [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
   - [Hexadecimal Encoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
-  - [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/Inside_Hex_Decode.pdf)
-  - [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/The_XOR_Transform.pdf)
+  - [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/inside_hex_decode.pdf)
+  - [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_xor_transform.pdf)
 
 ## In-App Access
 
