@@ -12,6 +12,7 @@ Android APKs are published to [GitHub Releases](https://github.com/danyel-ii/Cod
 2. Download `app-release.apk` from the latest release.
 3. Open the downloaded file and follow the on-screen prompts to install it.
 4. If Android asks you to allow installation from unknown sources, grant the permission and proceed.
+5. After install, verify the app appears with the current [CodeChef icon](apps/mobile/assets/icon/app_icon_master.png).
 
 For full details see [Android Releases](documents/ANDROID_RELEASES.md).
 
@@ -31,6 +32,10 @@ In the app:
 The maintained deck folder is:
 
 - [apps/mobile/assets/pdfs](apps/mobile/assets/pdfs)
+
+## App icon
+
+- [Current app icon master](apps/mobile/assets/icon/app_icon_master.png)
 
 ## Current product scope
 

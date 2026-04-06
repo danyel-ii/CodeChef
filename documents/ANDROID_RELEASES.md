@@ -17,7 +17,8 @@ Example release page:
 3. Open the downloaded file.
 4. Allow installation from that source if Android prompts for it.
 5. Install the app.
-6. After install, bundled PDF decks are available in-app:
+6. Confirm the installed app uses the current [CodeChef icon](/Users/danyel-ii/CodeChef/apps/mobile/assets/icon/app_icon_master.png).
+7. After install, bundled PDF decks are available in-app:
    - `Settings > Open Blueprint PDF`
    - `Learn > Base64 Encode / Hex Encode / Hex Decode / XOR > Open PDF`
 
@@ -47,6 +48,14 @@ flutter build apk --release
 The output file is at:
 
 `apps/mobile/build/app/outputs/flutter-apk/app-release.apk`
+
+## App icon
+
+The current launcher icon source is:
+
+- [app_icon_master.png](/Users/danyel-ii/CodeChef/apps/mobile/assets/icon/app_icon_master.png)
+
+Android launcher icons and web icons are generated from that master asset.
 
 ## Bundled PDF documents
 
