@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_recipe_lab_mobile/src/features/documents/file_save_dialog.dart';
 import 'package:mobile_recipe_lab_mobile/src/features/workbench/workbench_controller.dart';
 import 'package:persistence_drift/persistence_drift.dart';
 import 'package:recipe_domain/recipe_domain.dart';
@@ -441,6 +442,35 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                   ),
                 ),
                 const SizedBox(height: 12),
+                FilledButton.icon(
+                  onPressed: () async {
+                    final String safeTitle = recipe.title
+                        .toLowerCase()
+                        .replaceAll(RegExp(r'[^a-z0-9]+'), '_')
+                        .replaceAll(RegExp(r'_+'), '_')
+                        .replaceAll(RegExp(r'^_|_$'), '');
+                    final filePath = await saveTextFileWithDialog(
+                      fileName:
+                          '${safeTitle.isEmpty ? 'recipe' : safeTitle}_${recipe.recipeId}.json',
+                      text: jsonText,
+                    );
+                    if (context.mounted) {
+                      Navigator.of(context).pop();
+                      messenger.showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            filePath == null || filePath.isEmpty
+                                ? 'Recipe export cancelled.'
+                                : 'Recipe JSON saved to $filePath',
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  icon: const Icon(Icons.save_alt_outlined),
+                  label: const Text('Save JSON'),
+                ),
+                const SizedBox(height: 8),
                 FilledButton.icon(
                   onPressed: () async {
                     await Clipboard.setData(ClipboardData(text: jsonText));

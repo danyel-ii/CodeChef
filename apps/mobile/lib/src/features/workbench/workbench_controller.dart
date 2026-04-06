@@ -245,25 +245,32 @@ class WorkbenchController extends Notifier<WorkbenchState> {
   }
 
   Future<void> saveRecipe() async {
-    final store = await ref.read(recipeStoreProvider.future);
-    final now = DateTime.now().toUtc();
-    final recipe = _buildRecipe(
-      recipeId: (state.currentRecipeId == null || state.currentRecipeId!.isEmpty)
-          ? now.microsecondsSinceEpoch.toString()
-          : state.currentRecipeId!,
-      now: now,
-    );
-    final RecipeDocument persistedRecipe = _stripSecretParamsForPersistence(recipe);
-    await store.saveRecipe(persistedRecipe);
-    ref.invalidate(savedRecipesProvider);
-    state = state.copyWith(
-      currentRecipeId: recipe.recipeId,
-      lastRunRecipe: recipe,
-      infoMessage: _hasSecretParams(recipe)
-          ? 'Recipe saved locally. Secret parameters were omitted from storage.'
-          : 'Recipe saved locally.',
-      clearError: true,
-    );
+    try {
+      final store = await ref.read(recipeStoreProvider.future);
+      final now = DateTime.now().toUtc();
+      final recipe = _buildRecipe(
+        recipeId: (state.currentRecipeId == null || state.currentRecipeId!.isEmpty)
+            ? now.microsecondsSinceEpoch.toString()
+            : state.currentRecipeId!,
+        now: now,
+      );
+      final RecipeDocument persistedRecipe = _stripSecretParamsForPersistence(recipe);
+      await store.saveRecipe(persistedRecipe);
+      ref.invalidate(savedRecipesProvider);
+      state = state.copyWith(
+        currentRecipeId: recipe.recipeId,
+        lastRunRecipe: recipe,
+        infoMessage: _hasSecretParams(recipe)
+            ? 'Recipe saved locally in the library. Secret parameters were omitted from storage.'
+            : 'Recipe saved locally in the library.',
+        clearError: true,
+      );
+    } catch (error) {
+      state = state.copyWith(
+        error: 'Failed to save recipe: $error',
+        clearInfo: true,
+      );
+    }
   }
 
   Future<void> loadRecipe(RecipeDocument recipe) async {
@@ -387,13 +394,20 @@ class WorkbenchController extends Notifier<WorkbenchState> {
         .replaceAll(RegExp(r'[^a-z0-9]+'), '_')
         .replaceAll(RegExp(r'_+'), '_')
         .replaceAll(RegExp(r'^_|_$'), '');
-    final String path = await exportMarkdownReport(
+    final String? path = await exportMarkdownReport(
       fileName:
           '${safeTitle.isEmpty ? 'workbench_report' : safeTitle}_${DateTime.now().millisecondsSinceEpoch}.md',
       markdown: markdown,
     );
+    if (path == null || path.isEmpty) {
+      state = state.copyWith(
+        infoMessage: 'Export cancelled.',
+        clearError: true,
+      );
+      return;
+    }
     state = state.copyWith(
-      infoMessage: 'Report exported to $path',
+      infoMessage: 'Report saved to $path',
       clearError: true,
     );
   }

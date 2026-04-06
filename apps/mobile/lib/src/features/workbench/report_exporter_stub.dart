@@ -1,4 +1,4 @@
-Future<String> exportMarkdownReport({
+Future<String?> exportMarkdownReport({
   required String fileName,
   required String markdown,
 }) {
