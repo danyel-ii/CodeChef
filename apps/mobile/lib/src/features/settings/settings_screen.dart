@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_recipe_lab_mobile/src/features/documents/asset_pdf_launcher.dart';
+import 'package:mobile_recipe_lab_mobile/src/features/documents/pdf_deck_catalog.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -49,23 +51,23 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(34),
-                      child: const Column(
+                      child: Column(
                         children: <Widget>[
-                          _SettingsBand(
+                          const _SettingsBand(
                             background: Color(0xFFF4F0E8),
                             textColor: Color(0xFF171311),
                             title: 'LOCAL-FIRST',
                             body:
                                 'Recipes and payload transforms stay on device. No remote execution is wired into this build.',
                           ),
-                          _SettingsBand(
+                          const _SettingsBand(
                             background: Color(0xFFF1DE6C),
                             textColor: Color(0xFF171311),
                             title: 'ENGINE',
                             body:
                                 'Operations run through the registry and executor stack, with isolate routing preserved for heavier work.',
                           ),
-                          _SettingsBand(
+                          const _SettingsBand(
                             background: Color(0xFF9366AE),
                             textColor: Color(0xFFF7F3E9),
                             title: 'STATUS',
@@ -73,11 +75,15 @@ class SettingsScreen extends StatelessWidget {
                                 'Android is the primary release target here, with the GitHub APK pipeline and mobile workflow actively maintained.',
                           ),
                           _SettingsBand(
-                            background: Color(0xFFE37BA3),
-                            textColor: Color(0xFF171311),
-                            title: 'NEXT',
+                            background: const Color(0xFFE37BA3),
+                            textColor: const Color(0xFF171311),
+                            title: 'ABOUT',
                             body:
-                                'This screen can grow into diagnostics, pack versions, migrations, and export/import controls.',
+                                'Open the bundled CodeChef blueprint slide deck from inside the app.',
+                            actionLabel: 'Open Blueprint PDF',
+                            onAction: () async {
+                              await _openDeck(context, aboutBlueprintDeck);
+                            },
                           ),
                         ],
                       ),
@@ -91,6 +97,19 @@ class SettingsScreen extends StatelessWidget {
       ),
     );
   }
+
+  Future<void> _openDeck(BuildContext context, PdfDeck deck) async {
+    try {
+      await const AssetPdfLauncher().openDeck(deck);
+    } catch (error) {
+      if (!context.mounted) {
+        return;
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(error.toString())),
+      );
+    }
+  }
 }
 
 class _SettingsBand extends StatelessWidget {
@@ -99,12 +118,16 @@ class _SettingsBand extends StatelessWidget {
     required this.textColor,
     required this.title,
     required this.body,
+    this.actionLabel,
+    this.onAction,
   });
 
   final Color background;
   final Color textColor;
   final String title;
   final String body;
+  final String? actionLabel;
+  final Future<void> Function()? onAction;
 
   @override
   Widget build(BuildContext context) {
@@ -133,6 +156,17 @@ class _SettingsBand extends StatelessWidget {
               color: textColor,
             ),
           ),
+          if (actionLabel != null && onAction != null) ...<Widget>[
+            const SizedBox(height: 14),
+            FilledButton(
+              style: FilledButton.styleFrom(
+                backgroundColor: textColor,
+                foregroundColor: background,
+              ),
+              onPressed: onAction,
+              child: Text(actionLabel!),
+            ),
+          ],
         ],
       ),
     );

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_recipe_lab_mobile/src/features/documents/asset_pdf_launcher.dart';
+import 'package:mobile_recipe_lab_mobile/src/features/documents/pdf_deck_catalog.dart';
 import 'package:mobile_recipe_lab_mobile/src/features/workbench/workbench_controller.dart';
 import 'package:operation_registry/operation_registry.dart';
 import 'package:pack_learning_content/pack_learning_content.dart';
@@ -421,6 +423,12 @@ class _LearningDetailSheet extends ConsumerWidget {
                   body: learning.relatedOperations.join(', '),
                 ),
               ],
+              if (operationLearningDecks.containsKey(operation.operation.manifest.id)) ...<Widget>[
+                const SizedBox(height: 12),
+                _LearningDeckCard(
+                  deck: operationLearningDecks[operation.operation.manifest.id]!,
+                ),
+              ],
               const SizedBox(height: 12),
               ...learning.examples.map(
                 (LearningExample example) => Padding(
@@ -442,6 +450,80 @@ class _LearningDetailSheet extends ConsumerWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _LearningDeckCard extends StatelessWidget {
+  const _LearningDeckCard({
+    required this.deck,
+  });
+
+  final PdfDeck deck;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF0B58D),
+        borderRadius: BorderRadius.circular(22),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'SLIDE DECK',
+            style: GoogleFonts.spaceGrotesk(
+              color: const Color(0xFF171311),
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            deck.title,
+            style: GoogleFonts.spaceGrotesk(
+              color: const Color(0xFF171311),
+              fontSize: 24,
+              fontWeight: FontWeight.w700,
+              letterSpacing: -0.8,
+            ),
+          ),
+          if (deck.description != null) ...<Widget>[
+            const SizedBox(height: 8),
+            Text(
+              deck.description!,
+              style: GoogleFonts.ibmPlexMono(
+                color: const Color(0xFF171311),
+                fontSize: 13,
+                height: 1.45,
+              ),
+            ),
+          ],
+          const SizedBox(height: 14),
+          FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: const Color(0xFF171311),
+              foregroundColor: const Color(0xFFF4F0E8),
+            ),
+            onPressed: () async {
+              try {
+                await const AssetPdfLauncher().openDeck(deck);
+              } catch (error) {
+                if (!context.mounted) {
+                  return;
+                }
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(error.toString())),
+                );
+              }
+            },
+            child: const Text('Open PDF'),
+          ),
+        ],
       ),
     );
   }

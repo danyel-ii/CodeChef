@@ -35,6 +35,16 @@ That is especially useful for:
 
 For a learning app, this is the difference between "tool reference" and "guided understanding."
 
+### 2.5 Bundled slide decks now support deeper lessons
+
+The app now includes bundled PDF slide decks inside the Android build.
+
+That matters because:
+
+- the blueprint deck gives the app a proper long-form "about" surface
+- selected operations can carry richer visual lesson material than a small in-app card
+- the decks remain available offline because they ship with the APK
+
 ### 3. Example-driven entry works well
 
 Learning examples can be loaded into the Workbench, which lets users move from concept review into hands-on use without re-entering parameters manually.

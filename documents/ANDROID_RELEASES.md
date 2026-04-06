@@ -17,6 +17,9 @@ Example release page:
 3. Open the downloaded file.
 4. Allow installation from that source if Android prompts for it.
 5. Install the app.
+6. After install, bundled PDF decks are available in-app:
+   - `Settings > Open Blueprint PDF`
+   - `Learn > Hex Encode > Open PDF`
 
 ## Release workflow
 
@@ -44,3 +47,12 @@ flutter build apk --release
 The output file is at:
 
 `apps/mobile/build/app/outputs/flutter-apk/app-release.apk`
+
+## Bundled PDF documents
+
+The shipped APK includes these bundled decks:
+
+- [CodeChef Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
+- [Hexadecimal Encoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
+
+The app copies each PDF into app-local storage on first open and launches it through the device PDF handler.

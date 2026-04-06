@@ -1,5 +1,9 @@
 # Hex Encode
 
+## Slide deck
+
+- [Hexadecimal Encoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
+
 ## What it is
 
 Hex Encode turns each byte into two hexadecimal digits.

@@ -36,6 +36,8 @@ dependencies:
     path: ../../packages/recipe_domain
   operation_registry:
     path: ../../packages/operation_registry
+  open_filex: ^4.7.0
+  path: ^1.9.1
 
 dev_dependencies:
   flutter_test:
@@ -44,3 +46,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/pdfs/about/codechef_blueprint.pdf
+    - assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf

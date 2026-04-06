@@ -17,3 +17,7 @@ This folder contains one product-facing document for each encoding, decoding, or
 - [ROT13](/Users/danyel-ii/CodeChef/documents/operations/ROT13.md)
 - [Caesar Cipher](/Users/danyel-ii/CodeChef/documents/operations/CAESAR_CIPHER.md)
 - [Vigenere Cipher](/Users/danyel-ii/CodeChef/documents/operations/VIGENERE_CIPHER.md)
+
+## Related slide decks
+
+- [Hexadecimal Encoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)

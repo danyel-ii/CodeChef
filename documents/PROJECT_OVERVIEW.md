@@ -27,6 +27,7 @@ It is built as a Flutter app backed by modular Dart packages for domain models, 
 - Browse installed operations by pack
 - Search learning content
 - Open explanations, examples, related operations, and step-by-step "how it works" sections
+- Open bundled PDF slide decks for the blueprint/about surface and selected operation lessons
 - Load learning examples directly into the Workbench
 
 ### Library
@@ -42,6 +43,7 @@ It is built as a Flutter app backed by modular Dart packages for domain models, 
 ### Settings
 
 - View app-facing product context and current package scope
+- Open the bundled CodeChef blueprint PDF
 
 ## Installed packs
 
@@ -70,9 +72,19 @@ It is built as a Flutter app backed by modular Dart packages for domain models, 
 ### `core.cipher`
 
 - XOR
+- XOR Brute Force
 - ROT13
+- ROT47
 - Caesar
+- Caesar Box
+- Atbash
+- Rail Fence
+- Affine
+- Bacon
 - Vigenere
+- RC4
+- AES
+- DES
 
 ## Product characteristics
 

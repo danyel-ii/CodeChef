@@ -2,7 +2,7 @@
 
 CodeChef is a touch-first Flutter app for building transformation recipes on mobile.
 
-Users can enter text, compose multi-step recipes, preview results live, save recipes locally, review what each operation does, and export a Markdown report of a full transformation run.
+Users can enter text, compose multi-step recipes, preview results live, save recipes locally, review what each operation does, open bundled learning slide decks, and export a Markdown report of a full transformation run.
 
 ## Install
 
@@ -14,6 +14,16 @@ Android APKs are published to [GitHub Releases](https://github.com/danyel-ii/Cod
 4. If Android asks you to allow installation from unknown sources, grant the permission and proceed.
 
 For full details see [Android Releases](documents/ANDROID_RELEASES.md).
+
+## Bundled slide decks
+
+- [CodeChef Blueprint](apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
+- [Hexadecimal Encoding Mechanics](apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
+
+In the app:
+
+1. Open `Settings` and tap `Open Blueprint PDF` for the about/blueprint deck.
+2. Open `Learn`, choose `Hex Encode`, and tap `Open PDF` for the first operation-specific learning deck.
 
 ## Current product scope
 
@@ -48,6 +58,7 @@ For full details see [Android Releases](documents/ANDROID_RELEASES.md).
 - [Project Overview](documents/PROJECT_OVERVIEW.md)
 - [Learning App Review](documents/LEARNING_APP_REVIEW.md)
 - [Android Releases](documents/ANDROID_RELEASES.md)
+- [Slide Decks](documents/SLIDE_DECKS.md)
 
 ## Development
 
