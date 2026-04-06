@@ -7,7 +7,8 @@ const OperationManifest rc4Manifest = OperationManifest(
   id: 'core.cipher.rc4',
   version: '1.0.0',
   title: 'RC4',
-  shortDescription: 'Applies the RC4 stream cipher to the input bytes.',
+  shortDescription:
+      'Educational RC4 stream-cipher transform for legacy analysis; not for new secure designs.',
   category: 'Cipher',
   tags: <String>['rc4', 'cipher', 'stream', 'legacy'],
   inputKinds: <PayloadKind>[PayloadKind.text],

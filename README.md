@@ -4,6 +4,13 @@ Code Chef is a touch-first Flutter app for building transformation recipes on mo
 
 Users can enter text, compose multi-step recipes, preview results live, save recipes locally, review what each operation does, open bundled learning slide decks, and export a Markdown report of a full transformation run.
 
+Security posture:
+
+- recipe storage is local-only and excluded from Android backup/export rules
+- secret operation parameters are omitted from saved recipes and redacted from Markdown reports
+- file exports use the Android save picker and clean up temporary export files afterward
+- cipher features are labeled as educational tooling, with stronger warnings on legacy crypto and unauthenticated AES-CBC
+
 ## Install
 
 Android APKs are published to [GitHub Releases](https://github.com/danyel-ii/CodeChef/releases).
@@ -49,6 +56,7 @@ The maintained deck folder is:
 
 - Mobile-first workbench for text payload transformation
 - Local recipe library with save, load, favorite, duplicate, import, and export
+- Android backup exclusion rules for local recipe data
 - Learn surface with explanations, examples, and related operations
 - Modular operation packs for:
   - `core.text`

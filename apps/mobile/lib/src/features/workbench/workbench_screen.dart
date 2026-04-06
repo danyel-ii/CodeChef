@@ -86,7 +86,7 @@ class _WorkbenchScreenState extends ConsumerState<WorkbenchScreen> {
             ),
             const SizedBox(height: 6),
             Text(
-              'A recipe stack with bold stages, touch-first editing, and fast visual feedback.',
+              'Build, test, save, and explain transformation recipes one step at a time.',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 14),
@@ -131,7 +131,9 @@ class _WorkbenchScreenState extends ConsumerState<WorkbenchScreen> {
                             _inputController.clear();
                             controller.setInput('');
                           },
-                          onSave: state.steps.isEmpty ? null : controller.saveRecipe,
+                          onSave: state.steps.isEmpty
+                              ? null
+                              : controller.saveRecipe,
                         ),
                         _ControlBar(
                           selectedOperationId: state.selectedOperationId,
@@ -179,10 +181,14 @@ class _WorkbenchScreenState extends ConsumerState<WorkbenchScreen> {
                                       step: step,
                                       manifest: operation.operation.manifest,
                                       canMoveUp: entry.key > 0,
-                                      canMoveDown: entry.key < state.steps.length - 1,
-                                      onMoveUp: () => controller.moveStep(step.stepId, -1),
-                                      onMoveDown: () => controller.moveStep(step.stepId, 1),
-                                      onDelete: () => controller.removeStep(step.stepId),
+                                      canMoveDown:
+                                          entry.key < state.steps.length - 1,
+                                      onMoveUp: () =>
+                                          controller.moveStep(step.stepId, -1),
+                                      onMoveDown: () =>
+                                          controller.moveStep(step.stepId, 1),
+                                      onDelete: () =>
+                                          controller.removeStep(step.stepId),
                                       onSave: controller.updateStep,
                                     );
                                   },
@@ -287,7 +293,8 @@ class _InputPanel extends StatelessWidget {
             ),
             decoration: InputDecoration(
               hintText: 'Paste text to transform',
-              hintStyle: GoogleFonts.ibmPlexMono(color: const Color(0xFF7A7267)),
+              hintStyle:
+                  GoogleFonts.ibmPlexMono(color: const Color(0xFF7A7267)),
               fillColor: const Color(0xFFF9F6EF),
               suffixIcon: IconButton(
                 onPressed: onClearInput,
@@ -407,6 +414,12 @@ class _ControlBar extends StatelessWidget {
                       fontSize: 12,
                     ),
                   ),
+                  if (_securityLabelForManifest(
+                          selectedOperation.operation.manifest)
+                      case final String label) ...<Widget>[
+                    const SizedBox(height: 8),
+                    _SecurityPill(label: label),
+                  ],
                 ],
               ),
             ),
@@ -422,7 +435,8 @@ class _ControlBar extends StatelessWidget {
                   isScrollControlled: true,
                   backgroundColor: const Color(0xFF1A1715),
                   shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(28)),
                   ),
                   showDragHandle: true,
                   builder: (BuildContext context) {
@@ -487,9 +501,13 @@ class _OperationPickerSheetState extends State<_OperationPickerSheet> {
 
   @override
   Widget build(BuildContext context) {
-    final packIds = widget.operations.map((entry) => entry.packId).toSet().toList(growable: false)
+    final packIds = widget.operations
+        .map((entry) => entry.packId)
+        .toSet()
+        .toList(growable: false)
       ..sort();
-    final filtered = widget.operations.where(_matchesFilter).toList(growable: false);
+    final filtered =
+        widget.operations.where(_matchesFilter).toList(growable: false);
 
     return SafeArea(
       child: Padding(
@@ -573,15 +591,18 @@ class _OperationPickerSheetState extends State<_OperationPickerSheet> {
                 separatorBuilder: (_, __) => const SizedBox(height: 8),
                 itemBuilder: (BuildContext context, int index) {
                   final operation = filtered[index];
-                  final selected =
-                      operation.operation.manifest.id == widget.selectedOperationId;
+                  final selected = operation.operation.manifest.id ==
+                      widget.selectedOperationId;
                   return Material(
-                    color: selected ? const Color(0xFFF1DE6C) : const Color(0xFFF4F0E8),
+                    color: selected
+                        ? const Color(0xFFF1DE6C)
+                        : const Color(0xFFF4F0E8),
                     borderRadius: BorderRadius.circular(22),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(22),
                       onTap: () {
-                        widget.onSelectOperation(operation.operation.manifest.id);
+                        widget
+                            .onSelectOperation(operation.operation.manifest.id);
                         Navigator.of(context).pop();
                       },
                       child: Padding(
@@ -614,6 +635,12 @@ class _OperationPickerSheetState extends State<_OperationPickerSheet> {
                                 height: 1.4,
                               ),
                             ),
+                            if (_securityLabelForManifest(
+                                    operation.operation.manifest)
+                                case final String label) ...<Widget>[
+                              const SizedBox(height: 8),
+                              _SecurityPill(label: label),
+                            ],
                           ],
                         ),
                       ),
@@ -796,7 +823,9 @@ class _OutputPanel extends StatelessWidget {
                 foregroundColor: const Color(0xFF171311),
                 side: const BorderSide(color: Color(0x55171311)),
               ),
-              onPressed: isRunning || output == null || output!.isEmpty ? null : onExport,
+              onPressed: isRunning || output == null || output!.isEmpty
+                  ? null
+                  : onExport,
               icon: const Icon(Icons.description_outlined),
               label: const Text('Export .md'),
             ),
@@ -913,7 +942,8 @@ class _EditorSurface extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(18),
-                    borderSide: const BorderSide(color: Color(0xFF171311), width: 1.2),
+                    borderSide:
+                        const BorderSide(color: Color(0xFF171311), width: 1.2),
                   ),
                 ),
               ),
@@ -1006,6 +1036,11 @@ class _StepEditorSheetState extends State<StepEditorSheet> {
                         height: 1.4,
                       ),
                     ),
+                    if (_securityNoticeForManifest(widget.manifest)
+                        case final String note) ...<Widget>[
+                      const SizedBox(height: 12),
+                      _SheetNotice(note: note),
+                    ],
                   ],
                 ),
               ),
@@ -1110,5 +1145,89 @@ class _GeneratedParamField extends StatelessWidget {
       value: value,
       onChanged: onChanged,
     );
+  }
+}
+
+class _SecurityPill extends StatelessWidget {
+  const _SecurityPill({
+    required this.label,
+  });
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: const Color(0x22171311),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.spaceGrotesk(
+          color: const Color(0xFF171311),
+          fontSize: 11,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+}
+
+class _SheetNotice extends StatelessWidget {
+  const _SheetNotice({
+    required this.note,
+  });
+
+  final String note;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: const Color(0x22FFFFFF),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        note,
+        style: GoogleFonts.ibmPlexMono(
+          color: const Color(0xFF171311),
+          fontSize: 12,
+          height: 1.45,
+        ),
+      ),
+    );
+  }
+}
+
+String? _securityLabelForManifest(OperationManifest manifest) {
+  if (manifest.id == 'core.cipher.aes') {
+    return 'Educational Only • AES-CBC';
+  }
+  if (manifest.id == 'core.cipher.des' || manifest.id == 'core.cipher.rc4') {
+    return 'Educational Only • Legacy Crypto';
+  }
+  if (manifest.category == 'Cipher') {
+    return 'Educational Cipher';
+  }
+  return null;
+}
+
+String? _securityNoticeForManifest(OperationManifest manifest) {
+  switch (manifest.id) {
+    case 'core.cipher.aes':
+      return 'This AES operation is for learning and compatibility work. CBC mode here does not authenticate the message.';
+    case 'core.cipher.des':
+      return 'DES is obsolete. Keep it for historical or protocol-analysis tasks only.';
+    case 'core.cipher.rc4':
+      return 'RC4 is deprecated and should not be used for new secure designs.';
+    default:
+      if (manifest.category == 'Cipher') {
+        return 'Treat this as educational cipher tooling, not a secure messaging feature.';
+      }
+      return null;
   }
 }

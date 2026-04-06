@@ -143,7 +143,9 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                         borderRadius: BorderRadius.circular(34),
                         child: savedRecipes.when(
                           data: (List<SavedRecipeRecord> recipes) {
-                            final filtered = recipes.where(_matchesFilter).toList(growable: false);
+                            final filtered = recipes
+                                .where(_matchesFilter)
+                                .toList(growable: false);
                             if (filtered.isEmpty) {
                               return Container(
                                 color: const Color(0xFFF4F0E8),
@@ -179,8 +181,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                             return ListView.separated(
                               padding: EdgeInsets.zero,
                               itemCount: filtered.length,
-                              separatorBuilder: (_, __) =>
-                                  const Divider(height: 1, color: Color(0x22000000)),
+                              separatorBuilder: (_, __) => const Divider(
+                                  height: 1, color: Color(0x22000000)),
                               itemBuilder: (BuildContext context, int index) {
                                 final recipe = filtered[index];
                                 final Color band = <Color>[
@@ -195,7 +197,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                     : const Color(0xFFF7F3E9);
                                 return TweenAnimationBuilder<double>(
                                   tween: Tween<double>(begin: 0, end: 1),
-                                  duration: Duration(milliseconds: 260 + (index * 60)),
+                                  duration: Duration(
+                                      milliseconds: 260 + (index * 60)),
                                   curve: Curves.easeOutCubic,
                                   builder: (
                                     BuildContext context,
@@ -204,16 +207,20 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                   ) {
                                     return Transform.translate(
                                       offset: Offset(0, (1 - value) * 16),
-                                      child: Opacity(opacity: value, child: child),
+                                      child:
+                                          Opacity(opacity: value, child: child),
                                     );
                                   },
                                   child: Material(
                                     color: band,
                                     child: InkWell(
                                       onTap: () async {
-                                        final store = await ref.read(recipeStoreProvider.future);
-                                        final loaded = await store.loadRecipe(recipe.recipeId);
-                                        if (loaded == null || !context.mounted) {
+                                        final store = await ref
+                                            .read(recipeStoreProvider.future);
+                                        final loaded = await store
+                                            .loadRecipe(recipe.recipeId);
+                                        if (loaded == null ||
+                                            !context.mounted) {
                                           return;
                                         }
                                         await controller.loadRecipe(loaded);
@@ -222,19 +229,24 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                         }
                                       },
                                       child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(18, 18, 18, 20),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            18, 18, 18, 20),
                                         child: Row(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: <Widget>[
                                             Expanded(
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: <Widget>[
                                                   Text(
                                                     recipe.title.toUpperCase(),
-                                                    style: GoogleFonts.spaceGrotesk(
+                                                    style: GoogleFonts
+                                                        .spaceGrotesk(
                                                       fontSize: 26,
-                                                      fontWeight: FontWeight.w700,
+                                                      fontWeight:
+                                                          FontWeight.w700,
                                                       color: textColor,
                                                       letterSpacing: -0.8,
                                                     ),
@@ -243,32 +255,48 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                                   Text(
                                                     recipe.tags.isEmpty
                                                         ? 'No tags'
-                                                        : recipe.tags.join(' • '),
-                                                    style: GoogleFonts.ibmPlexMono(
+                                                        : recipe.tags
+                                                            .join(' • '),
+                                                    style:
+                                                        GoogleFonts.ibmPlexMono(
                                                       fontSize: 12,
-                                                      color: textColor.withValues(alpha: 0.85),
+                                                      color:
+                                                          textColor.withValues(
+                                                              alpha: 0.85),
                                                     ),
                                                   ),
-                                                  if (recipe.description != null &&
-                                                      recipe.description!.isNotEmpty) ...<Widget>[
+                                                  if (recipe.description !=
+                                                          null &&
+                                                      recipe.description!
+                                                          .isNotEmpty) ...<Widget>[
                                                     const SizedBox(height: 8),
                                                     Text(
                                                       recipe.description!,
                                                       maxLines: 2,
-                                                      overflow: TextOverflow.ellipsis,
-                                                      style: GoogleFonts.ibmPlexMono(
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: GoogleFonts
+                                                          .ibmPlexMono(
                                                         fontSize: 12,
-                                                        color: textColor.withValues(alpha: 0.85),
+                                                        color: textColor
+                                                            .withValues(
+                                                                alpha: 0.85),
                                                       ),
                                                     ),
                                                   ],
                                                   const SizedBox(height: 10),
                                                   Text(
-                                                    recipe.updatedAt.toLocal().toString(),
-                                                    style: GoogleFonts.spaceGrotesk(
+                                                    recipe.updatedAt
+                                                        .toLocal()
+                                                        .toString(),
+                                                    style: GoogleFonts
+                                                        .spaceGrotesk(
                                                       fontSize: 12,
-                                                      fontWeight: FontWeight.w700,
-                                                      color: textColor.withValues(alpha: 0.85),
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color:
+                                                          textColor.withValues(
+                                                              alpha: 0.85),
                                                     ),
                                                   ),
                                                 ],
@@ -277,7 +305,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                             Column(
                                               children: <Widget>[
                                                 IconButton(
-                                                  onPressed: () => _toggleFavorite(recipe),
+                                                  onPressed: () =>
+                                                      _toggleFavorite(recipe),
                                                   color: textColor,
                                                   icon: Icon(
                                                     recipe.isFavorite
@@ -287,9 +316,11 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                                 ),
                                                 PopupMenuButton<String>(
                                                   iconColor: textColor,
-                                                  onSelected: (String value) async {
+                                                  onSelected:
+                                                      (String value) async {
                                                     if (value == 'duplicate') {
-                                                      await _duplicateRecipe(recipe.recipeId);
+                                                      await _duplicateRecipe(
+                                                          recipe.recipeId);
                                                       return;
                                                     }
                                                     if (value == 'export') {
@@ -299,17 +330,22 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                                                       );
                                                       return;
                                                     }
-                                                    await controller.deleteRecipe(recipe.recipeId);
+                                                    await controller
+                                                        .deleteRecipe(
+                                                            recipe.recipeId);
                                                   },
-                                                  itemBuilder: (BuildContext context) =>
-                                                      const <PopupMenuEntry<String>>[
+                                                  itemBuilder:
+                                                      (BuildContext context) =>
+                                                          const <PopupMenuEntry<
+                                                              String>>[
                                                     PopupMenuItem<String>(
                                                       value: 'duplicate',
                                                       child: Text('Duplicate'),
                                                     ),
                                                     PopupMenuItem<String>(
                                                       value: 'export',
-                                                      child: Text('Export JSON'),
+                                                      child:
+                                                          Text('Export JSON'),
                                                     ),
                                                     PopupMenuItem<String>(
                                                       value: 'delete',
@@ -336,7 +372,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                               ),
                             );
                           },
-                          loading: () => const Center(child: CircularProgressIndicator()),
+                          loading: () =>
+                              const Center(child: CircularProgressIndicator()),
                         ),
                       ),
                     ),
@@ -396,7 +433,8 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
     if (recipe == null || !context.mounted) {
       return;
     }
-    final jsonText = const JsonEncoder.withIndent('  ').convert(recipe.toJson());
+    final jsonText =
+        const JsonEncoder.withIndent('  ').convert(recipe.toJson());
     await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -473,11 +511,19 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                 const SizedBox(height: 8),
                 FilledButton.icon(
                   onPressed: () async {
+                    final bool confirmed = await _confirmClipboardCopy(context);
+                    if (!confirmed) {
+                      return;
+                    }
                     await Clipboard.setData(ClipboardData(text: jsonText));
                     if (context.mounted) {
                       Navigator.of(context).pop();
                       messenger.showSnackBar(
-                        const SnackBar(content: Text('Recipe JSON copied to clipboard.')),
+                        const SnackBar(
+                          content: Text(
+                            'Recipe JSON copied to clipboard. Other apps may read clipboard contents.',
+                          ),
+                        ),
                       );
                     }
                   },
@@ -541,21 +587,26 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                     try {
                       final dynamic decoded = jsonDecode(controller.text);
                       final recipe = RecipeDocument.fromJson(
-                        (decoded as Map<Object?, Object?>).cast<String, dynamic>(),
+                        (decoded as Map<Object?, Object?>)
+                            .cast<String, dynamic>(),
                       );
                       final store = await ref.read(recipeStoreProvider.future);
-                      await store.saveRecipe(recipe.copyWith(updatedAt: DateTime.now().toUtc()));
+                      await store.saveRecipe(
+                          recipe.copyWith(updatedAt: DateTime.now().toUtc()));
                       ref.invalidate(savedRecipesProvider);
                       if (context.mounted) {
                         Navigator.of(context).pop();
                         messenger.showSnackBar(
-                          const SnackBar(content: Text('Recipe imported into the library.')),
+                          const SnackBar(
+                              content:
+                                  Text('Recipe imported into the library.')),
                         );
                       }
                     } catch (error) {
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Invalid recipe JSON: $error')),
+                          SnackBar(
+                              content: Text('Invalid recipe JSON: $error')),
                         );
                       }
                     }
@@ -570,5 +621,30 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
       },
     );
     controller.dispose();
+  }
+
+  Future<bool> _confirmClipboardCopy(BuildContext context) async {
+    final bool? confirmed = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Copy Recipe JSON?'),
+          content: const Text(
+            'Clipboard contents can be visible to other apps on the device. Save to a file instead if the recipe is sensitive.',
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: const Text('Cancel'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: const Text('Copy Anyway'),
+            ),
+          ],
+        );
+      },
+    );
+    return confirmed ?? false;
   }
 }

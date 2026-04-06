@@ -7,7 +7,8 @@ const OperationManifest desManifest = OperationManifest(
   id: 'core.cipher.des',
   version: '1.0.0',
   title: 'DES',
-  shortDescription: 'Encrypts or decrypts text with legacy DES and PKCS7 padding.',
+  shortDescription:
+      'Educational legacy DES transform with PKCS7 padding; not suitable for modern protection.',
   category: 'Cipher',
   tags: <String>['des', 'cipher', 'block', 'legacy', 'ecb'],
   inputKinds: <PayloadKind>[PayloadKind.text],

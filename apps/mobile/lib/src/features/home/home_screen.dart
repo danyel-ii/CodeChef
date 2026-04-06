@@ -1,3 +1,4 @@
+import 'package:execution_protocol/execution_protocol.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -42,7 +43,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         )
         .where(_matchesFilter)
         .toList(growable: false);
-    final packIds = operations.map((entry) => entry.packId).toSet().toList(growable: false)
+    final packIds = operations
+        .map((entry) => entry.packId)
+        .toSet()
+        .toList(growable: false)
       ..sort();
 
     return SafeArea(
@@ -155,7 +159,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ...learningOperations.asMap().entries.map(
                         (MapEntry<int, RegisteredOperation> entry) {
                           final operation = entry.value;
-                          final learning = learningMap[operation.operation.manifest.id]!;
+                          final learning =
+                              learningMap[operation.operation.manifest.id]!;
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 12),
                             child: _LearningCard(
@@ -325,6 +330,14 @@ class _LearningCard extends StatelessWidget {
                     ),
                   ],
                 ),
+                if (_securityLabelForManifest(operation.operation.manifest)
+                    case final String label) ...<Widget>[
+                  const SizedBox(height: 8),
+                  _WarningPill(
+                    label: label,
+                    foreground: textColor,
+                  ),
+                ],
                 const SizedBox(height: 8),
                 Text(
                   learning.whatItDoes,
@@ -402,11 +415,17 @@ class _LearningDetailSheet extends ConsumerWidget {
                         fontSize: 13,
                       ),
                     ),
+                    if (_securityNoteForManifest(operation.operation.manifest)
+                        case final String note) ...<Widget>[
+                      const SizedBox(height: 12),
+                      _SecurityNotice(note: note),
+                    ],
                   ],
                 ),
               ),
               const SizedBox(height: 16),
-              _LearningSection(label: 'WHAT IT DOES', body: learning.whatItDoes),
+              _LearningSection(
+                  label: 'WHAT IT DOES', body: learning.whatItDoes),
               const SizedBox(height: 12),
               _LearningSection(label: 'WHEN TO USE', body: learning.whenToUse),
               const SizedBox(height: 12),
@@ -422,10 +441,12 @@ class _LearningDetailSheet extends ConsumerWidget {
                   body: learning.relatedOperations.join(', '),
                 ),
               ],
-              if (operationLearningDecks.containsKey(operation.operation.manifest.id)) ...<Widget>[
+              if (operationLearningDecks
+                  .containsKey(operation.operation.manifest.id)) ...<Widget>[
                 const SizedBox(height: 12),
                 _LearningDeckCard(
-                  deck: operationLearningDecks[operation.operation.manifest.id]!,
+                  deck:
+                      operationLearningDecks[operation.operation.manifest.id]!,
                 ),
               ],
               const SizedBox(height: 12),
@@ -437,7 +458,8 @@ class _LearningDetailSheet extends ConsumerWidget {
                     onUse: () async {
                       await ref
                           .read(workbenchControllerProvider.notifier)
-                          .loadLearningExample(operation.operation.manifest.id, example);
+                          .loadLearningExample(
+                              operation.operation.manifest.id, example);
                       if (context.mounted) {
                         Navigator.of(context).pop();
                         context.go('/workbench');
@@ -519,6 +541,107 @@ class _LearningDeckCard extends StatelessWidget {
   }
 }
 
+class _WarningPill extends StatelessWidget {
+  const _WarningPill({
+    required this.label,
+    required this.foreground,
+  });
+
+  final String label;
+  final Color foreground;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      decoration: BoxDecoration(
+        color: foreground.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(color: foreground.withValues(alpha: 0.28)),
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.spaceGrotesk(
+          color: foreground,
+          fontSize: 11,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+}
+
+class _SecurityNotice extends StatelessWidget {
+  const _SecurityNotice({
+    required this.note,
+  });
+
+  final String note;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF0B58D),
+        borderRadius: BorderRadius.circular(22),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'SECURITY NOTE',
+            style: GoogleFonts.spaceGrotesk(
+              color: const Color(0xFF171311),
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            note,
+            style: GoogleFonts.ibmPlexMono(
+              color: const Color(0xFF171311),
+              fontSize: 12,
+              height: 1.45,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+String? _securityLabelForManifest(OperationManifest manifest) {
+  if (manifest.id == 'core.cipher.aes') {
+    return 'Educational Only • No Integrity Check';
+  }
+  if (manifest.id == 'core.cipher.des' || manifest.id == 'core.cipher.rc4') {
+    return 'Educational Only • Legacy Crypto';
+  }
+  if (manifest.category == 'Cipher') {
+    return 'Educational Cipher';
+  }
+  return null;
+}
+
+String? _securityNoteForManifest(OperationManifest manifest) {
+  switch (manifest.id) {
+    case 'core.cipher.aes':
+      return 'AES-CBC here is for learning and compatibility work. It does not add authentication, so modified ciphertext can still decrypt to tampered output.';
+    case 'core.cipher.des':
+      return 'DES is obsolete and should not be used for modern protection. Keep it in analysis and classroom-style workflows only.';
+    case 'core.cipher.rc4':
+      return 'RC4 is deprecated and unsafe for new systems. Use it only for legacy protocol inspection or education.';
+    default:
+      if (manifest.category == 'Cipher') {
+        return 'Cipher operations in Code Chef are presented as educational tooling. Do not treat classical ciphers or reversible obfuscation as secure encryption.';
+      }
+      return null;
+  }
+}
+
 class _LearningStepsSection extends StatelessWidget {
   const _LearningStepsSection({
     required this.steps,
@@ -548,18 +671,18 @@ class _LearningStepsSection extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           ...steps.asMap().entries.map(
-            (MapEntry<int, String> entry) => Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Text(
-                '${entry.key + 1}. ${entry.value}',
-                style: GoogleFonts.ibmPlexMono(
-                  color: const Color(0xFF171311),
-                  fontSize: 13,
-                  height: 1.45,
+                (MapEntry<int, String> entry) => Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    '${entry.key + 1}. ${entry.value}',
+                    style: GoogleFonts.ibmPlexMono(
+                      color: const Color(0xFF171311),
+                      fontSize: 13,
+                      height: 1.45,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
         ],
       ),
     );

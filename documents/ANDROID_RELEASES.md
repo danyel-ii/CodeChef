@@ -22,6 +22,8 @@ Example release page:
    - `Settings > Open Blueprint PDF`
    - `Learn > Base64 Encode / Hex Encode / Hex Decode / XOR > Open PDF`
 8. PDF decks render inside the app, so no external PDF app is required for the bundled decks.
+9. Recipe storage stays local to the app and is excluded from Android backup/device-transfer rules.
+10. Markdown and recipe exports now go through the Android save picker instead of a fixed app-private folder.
 
 ## Release workflow
 
@@ -76,3 +78,11 @@ The shipped APK includes these bundled decks:
 - [AES-CBC Engineering Blueprint](../apps/mobile/assets/pdfs/operations/aes_cbc_engineering_blueprint.pdf)
 
 The app renders these bundled PDFs directly inside the mobile interface.
+
+## Security-sensitive local data
+
+- Saved recipes remain on-device in the app's local SQLite store.
+- Android backup and device-transfer extraction are explicitly disabled for app data.
+- Secret operation parameters are omitted from saved recipes and redacted in exported Markdown reports.
+- Temporary files used to hand content to the Android save picker are deleted immediately after save or cancel.
+- Copying recipe JSON to the clipboard shows a warning because other apps may be able to read clipboard contents.

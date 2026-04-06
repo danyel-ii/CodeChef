@@ -9,7 +9,11 @@ void main() {
     await tester.pumpWidget(const ProviderScope(child: MobileRecipeLabApp()));
 
     expect(find.byType(NavigationBar), findsOneWidget);
-    expect(find.text('A recipe stack with bold stages, touch-first editing, and fast visual feedback.'), findsOneWidget);
+    expect(
+      find.text(
+          'Build, test, save, and explain transformation recipes one step at a time.'),
+      findsOneWidget,
+    );
     expect(find.text('Save Recipe'), findsOneWidget);
   });
 }

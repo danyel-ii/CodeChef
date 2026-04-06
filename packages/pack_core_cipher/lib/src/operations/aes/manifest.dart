@@ -7,7 +7,8 @@ const OperationManifest aesManifest = OperationManifest(
   id: 'core.cipher.aes',
   version: '1.0.0',
   title: 'AES (CBC)',
-  shortDescription: 'Encrypts or decrypts bytes with AES-CBC and PKCS7 padding.',
+  shortDescription:
+      'Educational AES-CBC transform with PKCS7 padding; no authenticity protection.',
   category: 'Cipher',
   tags: <String>['aes', 'cipher', 'block', 'cbc', 'crypto'],
   inputKinds: <PayloadKind>[PayloadKind.text],

@@ -39,6 +39,7 @@ It is built as a Flutter app backed by modular Dart packages for domain models, 
 - Import recipe JSON
 - Export recipe JSON
 - Delete recipes
+- Keep saved recipe data excluded from Android backup/device-transfer rules
 
 ### Settings
 
@@ -90,10 +91,12 @@ It is built as a Flutter app backed by modular Dart packages for domain models, 
 
 - Local-first by default
 - No remote execution path in normal app use
+- Android backup/device-transfer excluded for local recipe storage
 - Recipe-oriented rather than screen-state-oriented
 - Metadata-driven operation editing
 - Pack-based extensibility
 - Learning content treated as a first-class product surface
+- Stronger in-app warnings for educational and legacy cipher operations
 
 ## Current release target
 

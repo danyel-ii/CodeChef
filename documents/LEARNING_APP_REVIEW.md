@@ -156,6 +156,12 @@ Because the app includes hashes and ciphers, it needs strong product language ar
 
 This is partly addressed in the content and recent secret-handling hardening, but it should remain a visible product principle.
 
+The app now reinforces that principle more directly by:
+
+- showing stronger warning badges for cipher operations
+- labeling AES-CBC, DES, and RC4 as educational or legacy tooling in the UI itself
+- keeping secret parameters out of saved recipes and exported reports
+
 ## Overall assessment
 
 Code Chef is already credible as a learning app in the following form:

@@ -8,11 +8,19 @@ Future<String?> saveTextFileWithDialog({
   required String text,
 }) async {
   final Directory tempDir = await getTemporaryDirectory();
-  final File tempFile = File('${tempDir.path}/$fileName');
-  await tempFile.writeAsString(text);
-  return FlutterFileDialog.saveFile(
-    params: SaveFileDialogParams(
-      sourceFilePath: tempFile.path,
-    ),
+  final File tempFile = File(
+    '${tempDir.path}/${DateTime.now().microsecondsSinceEpoch}_$fileName',
   );
+  await tempFile.writeAsString(text);
+  try {
+    return await FlutterFileDialog.saveFile(
+      params: SaveFileDialogParams(
+        sourceFilePath: tempFile.path,
+      ),
+    );
+  } finally {
+    if (await tempFile.exists()) {
+      await tempFile.delete();
+    }
+  }
 }
