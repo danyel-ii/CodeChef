@@ -17,7 +17,7 @@ Example release page:
 3. Open the downloaded file.
 4. Allow installation from that source if Android prompts for it.
 5. Install the app.
-6. Confirm the installed app uses the current [Code Chef icon](/Users/danyel-ii/CodeChef/apps/mobile/assets/icon/app_icon_master.png).
+6. Confirm the installed app uses the current [Code Chef icon](../apps/mobile/assets/icon/app_icon_master.png).
 7. After install, bundled PDF decks are available in-app:
    - `Settings > Open Blueprint PDF`
    - `Learn > Base64 Encode / Hex Encode / Hex Decode / XOR > Open PDF`
@@ -54,8 +54,8 @@ The output file is at:
 
 The current launcher icon source is:
 
-- [app_icon_master.png](/Users/danyel-ii/CodeChef/apps/mobile/assets/icon/app_icon_master.png)
-- [app_icon_source_square.png](/Users/danyel-ii/CodeChef/apps/mobile/assets/icon/app_icon_source_square.png)
+- [app_icon_master.png](../apps/mobile/assets/icon/app_icon_master.png)
+- [app_icon_source_square.png](../apps/mobile/assets/icon/app_icon_source_square.png)
 
 Android launcher icons and web icons are generated from that master asset.
 
@@ -63,16 +63,16 @@ Android launcher icons and web icons are generated from that master asset.
 
 The shipped APK includes these bundled decks:
 
-- [Code Chef Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
-- [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
-- [Base64 Decoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_decoding_mechanics.pdf)
-- [Hexadecimal Encoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
-- [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/inside_hex_decode.pdf)
-- [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_xor_transform.pdf)
-- [CRC32 Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/crc32_mechanics.pdf)
-- [Caesar Box Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/caesar_box_mechanics.pdf)
-- [The Affine Engine](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_affine_engine.pdf)
-- [Bacon Binary Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/bacon_binary_blueprint.pdf)
-- [AES-CBC Engineering Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/aes_cbc_engineering_blueprint.pdf)
+- [Code Chef Blueprint](../apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
+- [Base64 Deconstructed](../apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
+- [Base64 Decoding Mechanics](../apps/mobile/assets/pdfs/operations/base64_decoding_mechanics.pdf)
+- [Hexadecimal Encoding Mechanics](../apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
+- [Inside Hex Decode](../apps/mobile/assets/pdfs/operations/inside_hex_decode.pdf)
+- [The XOR Transform](../apps/mobile/assets/pdfs/operations/the_xor_transform.pdf)
+- [CRC32 Mechanics](../apps/mobile/assets/pdfs/operations/crc32_mechanics.pdf)
+- [Caesar Box Mechanics](../apps/mobile/assets/pdfs/operations/caesar_box_mechanics.pdf)
+- [The Affine Engine](../apps/mobile/assets/pdfs/operations/the_affine_engine.pdf)
+- [Bacon Binary Blueprint](../apps/mobile/assets/pdfs/operations/bacon_binary_blueprint.pdf)
+- [AES-CBC Engineering Blueprint](../apps/mobile/assets/pdfs/operations/aes_cbc_engineering_blueprint.pdf)
 
 The app renders these bundled PDFs directly inside the mobile interface.

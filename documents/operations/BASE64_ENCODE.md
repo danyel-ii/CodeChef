@@ -2,7 +2,7 @@
 
 ## Slide deck
 
-- [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
+- [Base64 Deconstructed](../../apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
 
 ## What it does
 

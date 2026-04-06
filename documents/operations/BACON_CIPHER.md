@@ -2,7 +2,7 @@
 
 ## Slide deck
 
-- [Bacon Binary Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/bacon_binary_blueprint.pdf)
+- [Bacon Binary Blueprint](../../apps/mobile/assets/pdfs/operations/bacon_binary_blueprint.pdf)
 
 ## What it does
 

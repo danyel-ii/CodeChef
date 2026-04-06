@@ -2,7 +2,7 @@
 
 ## Slide deck
 
-- [Base64 Decoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_decoding_mechanics.pdf)
+- [Base64 Decoding Mechanics](../../apps/mobile/assets/pdfs/operations/base64_decoding_mechanics.pdf)
 
 ## What it does
 

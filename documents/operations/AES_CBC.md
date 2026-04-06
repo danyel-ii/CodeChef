@@ -2,7 +2,7 @@
 
 ## Slide deck
 
-- [AES-CBC Engineering Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/aes_cbc_engineering_blueprint.pdf)
+- [AES-CBC Engineering Blueprint](../../apps/mobile/assets/pdfs/operations/aes_cbc_engineering_blueprint.pdf)
 
 ## What it does
 

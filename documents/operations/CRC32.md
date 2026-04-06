@@ -2,7 +2,7 @@
 
 ## Slide deck
 
-- [CRC32 Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/crc32_mechanics.pdf)
+- [CRC32 Mechanics](../../apps/mobile/assets/pdfs/operations/crc32_mechanics.pdf)
 
 ## What it does
 

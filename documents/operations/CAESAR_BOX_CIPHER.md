@@ -2,7 +2,7 @@
 
 ## Slide deck
 
-- [Caesar Box Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/caesar_box_mechanics.pdf)
+- [Caesar Box Mechanics](../../apps/mobile/assets/pdfs/operations/caesar_box_mechanics.pdf)
 
 ## What it does
 

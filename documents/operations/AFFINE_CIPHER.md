@@ -2,7 +2,7 @@
 
 ## Slide deck
 
-- [The Affine Engine](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_affine_engine.pdf)
+- [The Affine Engine](../../apps/mobile/assets/pdfs/operations/the_affine_engine.pdf)
 
 ## What it does
 

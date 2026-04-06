@@ -25,6 +25,6 @@ This folder is the source of truth for bundled slide-deck PDFs shipped with the 
 ## Update workflow
 
 1. Drop new or updated PDFs into the correct subfolder.
-2. Update [pdf_deck_catalog.dart](/Users/danyel-ii/CodeChef/apps/mobile/lib/src/features/documents/pdf_deck_catalog.dart) with the matching operation id.
+2. Update [pdf_deck_catalog.dart](../../lib/src/features/documents/pdf_deck_catalog.dart) with the matching operation id.
 3. Rebuild the app so the updated assets are bundled.
 4. Commit the PDFs so GitHub can serve them as downloadable files from the repository and releases.
