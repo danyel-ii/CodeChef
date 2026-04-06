@@ -8,5 +8,5 @@ The launcher assets in Android and web are resized from this master icon.
 
 Source note:
 
-- The icon was derived from `/Users/danyel-ii/Downloads/Gemini_Generated_Image_yyozixyyozixyyoz.png`
-- The baked checkerboard margin was removed by cropping to the central crest/plaque artwork before generating launcher sizes
+- The icon is derived from `/Users/danyel-ii/Library/CloudStorage/ProtonDrive-danyel-ii@proton.me-folder/codecheficon.png`
+- The launcher assets were regenerated from a centered square crop of that logo
