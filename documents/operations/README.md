@@ -20,4 +20,7 @@ This folder contains one product-facing document for each encoding, decoding, or
 
 ## Related slide decks
 
+- [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/Base64_Deconstructed.pdf)
 - [Hexadecimal Encoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
+- [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/Inside_Hex_Decode.pdf)
+- [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/The_XOR_Transform.pdf)

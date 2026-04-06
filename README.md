@@ -18,12 +18,19 @@ For full details see [Android Releases](documents/ANDROID_RELEASES.md).
 ## Bundled slide decks
 
 - [CodeChef Blueprint](apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
+- [Base64 Deconstructed](apps/mobile/assets/pdfs/operations/Base64_Deconstructed.pdf)
 - [Hexadecimal Encoding Mechanics](apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
+- [Inside Hex Decode](apps/mobile/assets/pdfs/operations/Inside_Hex_Decode.pdf)
+- [The XOR Transform](apps/mobile/assets/pdfs/operations/The_XOR_Transform.pdf)
 
 In the app:
 
 1. Open `Settings` and tap `Open Blueprint PDF` for the about/blueprint deck.
-2. Open `Learn`, choose `Hex Encode`, and tap `Open PDF` for the first operation-specific learning deck.
+2. Open `Learn`, choose a supported operation, and tap `Open PDF` for its linked slide deck.
+
+The maintained deck folder is:
+
+- [apps/mobile/assets/pdfs](apps/mobile/assets/pdfs)
 
 ## Current product scope
 

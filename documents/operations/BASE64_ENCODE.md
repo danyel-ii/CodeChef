@@ -1,5 +1,9 @@
 # Base64 Encode
 
+## Slide deck
+
+- [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/Base64_Deconstructed.pdf)
+
 ## What it is
 
 Base64 Encode turns binary data or text bytes into a limited alphabet made of:

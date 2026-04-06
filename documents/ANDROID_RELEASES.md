@@ -19,7 +19,7 @@ Example release page:
 5. Install the app.
 6. After install, bundled PDF decks are available in-app:
    - `Settings > Open Blueprint PDF`
-   - `Learn > Hex Encode > Open PDF`
+   - `Learn > Base64 Encode / Hex Encode / Hex Decode / XOR > Open PDF`
 
 ## Release workflow
 
@@ -53,6 +53,9 @@ The output file is at:
 The shipped APK includes these bundled decks:
 
 - [CodeChef Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
+- [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/Base64_Deconstructed.pdf)
 - [Hexadecimal Encoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
+- [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/Inside_Hex_Decode.pdf)
+- [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/The_XOR_Transform.pdf)
 
 The app copies each PDF into app-local storage on first open and launches it through the device PDF handler.

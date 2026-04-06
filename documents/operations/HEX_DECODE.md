@@ -1,5 +1,9 @@
 # Hex Decode
 
+## Slide deck
+
+- [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/Inside_Hex_Decode.pdf)
+
 ## What it is
 
 Hex Decode converts hexadecimal text back into the original bytes.

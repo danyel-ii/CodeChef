@@ -1,5 +1,9 @@
 # XOR
 
+## Slide deck
+
+- [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/The_XOR_Transform.pdf)
+
 ## What it is
 
 XOR is a byte-wise reversible transform based on the exclusive OR operation.
