@@ -1,5 +1,9 @@
 # Bacon Cipher
 
+## Slide deck
+
+- [Bacon Binary Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/bacon_binary_blueprint.pdf)
+
 ## What it does
 
 Bacon Cipher encodes letters as five-character groups made from `A` and `B`.

@@ -1,5 +1,9 @@
 # AES (CBC)
 
+## Slide deck
+
+- [AES-CBC Engineering Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/aes_cbc_engineering_blueprint.pdf)
+
 ## What it does
 
 This operation performs AES encryption or decryption in CBC mode with PKCS7 padding.

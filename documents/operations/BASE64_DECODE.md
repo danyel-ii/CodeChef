@@ -1,5 +1,9 @@
 # Base64 Decode
 
+## Slide deck
+
+- [Base64 Decoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_decoding_mechanics.pdf)
+
 ## What it does
 
 Base64 Decode turns Base64 text back into the original byte stream.

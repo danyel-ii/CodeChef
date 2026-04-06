@@ -1,5 +1,9 @@
 # CRC32
 
+## Slide deck
+
+- [CRC32 Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/crc32_mechanics.pdf)
+
 ## What it does
 
 CRC32 computes a 32-bit checksum for an input stream and renders it as 8 hexadecimal characters.

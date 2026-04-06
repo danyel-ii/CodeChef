@@ -65,8 +65,14 @@ The shipped APK includes these bundled decks:
 
 - [CodeChef Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
 - [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
+- [Base64 Decoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_decoding_mechanics.pdf)
 - [Hexadecimal Encoding Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
 - [Inside Hex Decode](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/inside_hex_decode.pdf)
 - [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_xor_transform.pdf)
+- [CRC32 Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/crc32_mechanics.pdf)
+- [Caesar Box Mechanics](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/caesar_box_mechanics.pdf)
+- [The Affine Engine](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_affine_engine.pdf)
+- [Bacon Binary Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/bacon_binary_blueprint.pdf)
+- [AES-CBC Engineering Blueprint](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/aes_cbc_engineering_blueprint.pdf)
 
 The app renders these bundled PDFs directly inside the mobile interface.

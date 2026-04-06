@@ -20,15 +20,22 @@ For full details see [Android Releases](documents/ANDROID_RELEASES.md).
 
 - [CodeChef Blueprint](apps/mobile/assets/pdfs/about/codechef_blueprint.pdf)
 - [Base64 Deconstructed](apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
+- [Base64 Decoding Mechanics](apps/mobile/assets/pdfs/operations/base64_decoding_mechanics.pdf)
 - [Hexadecimal Encoding Mechanics](apps/mobile/assets/pdfs/operations/hexadecimal_encoding_mechanics.pdf)
 - [Inside Hex Decode](apps/mobile/assets/pdfs/operations/inside_hex_decode.pdf)
 - [The XOR Transform](apps/mobile/assets/pdfs/operations/the_xor_transform.pdf)
+- [CRC32 Mechanics](apps/mobile/assets/pdfs/operations/crc32_mechanics.pdf)
+- [Caesar Box Mechanics](apps/mobile/assets/pdfs/operations/caesar_box_mechanics.pdf)
+- [The Affine Engine](apps/mobile/assets/pdfs/operations/the_affine_engine.pdf)
+- [Bacon Binary Blueprint](apps/mobile/assets/pdfs/operations/bacon_binary_blueprint.pdf)
+- [AES-CBC Engineering Blueprint](apps/mobile/assets/pdfs/operations/aes_cbc_engineering_blueprint.pdf)
 
 In the app:
 
 1. Open `Settings` and tap `Open Blueprint PDF` for the about/blueprint deck.
 2. Open `Learn`, choose a supported operation, and tap `Open PDF` for its linked slide deck.
 3. PDF decks now open inside the app rather than depending on an external PDF handler.
+4. The same PDF files can be downloaded directly from the repository paths above on GitHub.
 
 The maintained deck folder is:
 

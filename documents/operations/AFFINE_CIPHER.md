@@ -1,5 +1,9 @@
 # Affine Cipher
 
+## Slide deck
+
+- [The Affine Engine](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_affine_engine.pdf)
+
 ## What it does
 
 Affine Cipher is a substitution cipher that combines multiplication and addition modulo 26.
