@@ -1,21 +1,17 @@
 # Caesar Cipher
 
-## What it is
+## What it does
 
-The Caesar cipher is a monoalphabetic substitution cipher.
+Caesar Cipher shifts letters by a fixed number of positions through the alphabet.
 
-Each letter is replaced by another letter a fixed number of positions away in the alphabet.
-
-## How it works
+## Core algorithm in the app
 
 1. Choose a shift value.
-2. Walk through the text character by character.
-3. For each letter, move forward by the shift when encoding.
-4. Move backward by the same shift when decoding.
-5. Wrap around when the alphabet boundary is crossed.
+2. For encoding, add the shift.
+3. For decoding, subtract the shift.
+4. Wrap around inside the 26-letter alphabet.
+5. Preserve case.
 6. Leave non-letter characters unchanged.
-
-## Precise rule
 
 For uppercase letters:
 
@@ -52,13 +48,12 @@ Decoding that output with the same shift returns:
 Attack at dawn
 ```
 
-## What it teaches
+## App-specific behavior
 
-The Caesar cipher is useful for understanding:
-
-- substitution ciphers
-- modular arithmetic
-- the difference between reversible transformation and secure cryptography
+- `mode=encode` applies the shift as given
+- `mode=decode` negates the shift
+- the helper normalizes the shift modulo 26
+- non-alphabetic characters stay unchanged
 
 ## Security note
 

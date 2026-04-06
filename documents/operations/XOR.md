@@ -2,9 +2,9 @@
 
 ## Slide deck
 
- - [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_xor_transform.pdf)
+- [The XOR Transform](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/the_xor_transform.pdf)
 
-## What it is
+## What it does
 
 XOR is a byte-wise reversible transform based on the exclusive OR operation.
 
@@ -21,10 +21,10 @@ Its key property is reversibility:
 (data XOR key) XOR key = data
 ```
 
-## How it works in the app
+## Core algorithm in the app
 
 1. Interpret the input as text, hex, or Base64.
-2. Convert the key into bytes.
+2. Convert the key string into UTF-8 bytes.
 3. Repeat the key bytes over the full input length.
 4. XOR each input byte with the matching key byte.
 5. Render the result as text, hex, or Base64.
@@ -51,6 +51,19 @@ output[i] = input[i] XOR key[i mod keyLength]
 
 That `mod` is what makes the key repeat.
 
+## Input and output formats
+
+The operation supports:
+
+- input: `text`, `hex`, or `base64`
+- output: `text`, `hex`, or `base64`
+
+Input decoding behavior:
+
+- `text` means UTF-8 bytes of the string
+- `hex` must have an even number of digits
+- `base64` must be valid Base64
+
 ## Example
 
 Input text:
@@ -72,14 +85,6 @@ Result in hex:
 ```
 
 Applying the same XOR operation again with the same key returns `hello`.
-
-## Why it is educational
-
-XOR is useful for teaching:
-
-- reversible bitwise operations
-- repeating-key transforms
-- why "obfuscated" does not mean "secure"
 
 ## Security note
 

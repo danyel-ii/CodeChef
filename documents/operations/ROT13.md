@@ -1,20 +1,16 @@
 # ROT13
 
-## What it is
+## What it does
 
 ROT13 is a fixed Caesar shift of 13 places on the Latin alphabet.
 
 Because the alphabet has 26 letters, shifting by 13 twice returns the original text.
 
-## How it works
+## Core algorithm in the app
 
-1. Read one character at a time.
-2. If the character is a letter, move it forward by 13 positions.
-3. Wrap at the end of the alphabet.
-4. Preserve letter case.
-5. Leave digits, spaces, and punctuation unchanged.
-
-## Precise alphabet rule
+1. For each uppercase letter, shift within `A-Z`.
+2. For each lowercase letter, shift within `a-z`.
+3. Leave all non-letter characters unchanged.
 
 For uppercase letters:
 
@@ -27,6 +23,8 @@ For lowercase letters:
 ```text
 output = 'a' + ((input - 'a' + 13) mod 26)
 ```
+
+The app shares this behavior through a helper that normalizes the shift modulo 26 and applies it separately to uppercase and lowercase ASCII letters.
 
 ## Example
 
@@ -47,10 +45,6 @@ Applying ROT13 again returns:
 ```text
 Hello World
 ```
-
-## Why it is special
-
-Most Caesar shifts use different operations for encode and decode. ROT13 is symmetrical because 13 is exactly half of 26.
 
 ## Security note
 

@@ -1,21 +1,24 @@
 # Base64 Decode
 
-## What it is
+## What it does
 
-Base64 Decode reverses Base64 encoding and reconstructs the original bytes.
+Base64 Decode turns Base64 text back into the original byte stream.
 
-If those bytes represent text, they can then be interpreted using a character encoding such as UTF-8.
+Depending on the selected output mode, the app then interprets those bytes either as:
 
-## How it works
+- raw bytes
+- UTF-8 text
 
-1. Read the Base64 input in groups of 4 characters.
-2. Convert each character back into its 6-bit numeric value.
-3. Recombine 4 Base64 characters into a 24-bit block.
-4. Split that 24-bit block back into the original 3 bytes.
-5. Remove bytes that were only implied by `=` padding.
-6. Interpret the resulting bytes as text or keep them as raw bytes.
+## Core algorithm
 
-## Example
+1. Remove whitespace from the input.
+2. Read Base64 characters in groups of 4.
+3. Map each Base64 character back to a 6-bit value.
+4. Combine four 6-bit values into 24 bits.
+5. Split the 24 bits back into 3 bytes.
+6. Use `=` padding to determine whether the original group represented 1, 2, or 3 bytes.
+
+## Worked example
 
 Input:
 
@@ -23,21 +26,28 @@ Input:
 SGVsbG8=
 ```
 
-Decoded bytes:
+The reconstructed bytes are:
 
 ```text
 48 65 6c 6c 6f
 ```
 
-Text output:
+As UTF-8 text:
 
 ```text
 Hello
 ```
 
+## App-specific behavior
+
+- The app removes all whitespace before decoding, so wrapped Base64 blocks are accepted.
+- If `treatOutputAs=bytes`, the output remains a byte payload.
+- If `treatOutputAs=text`, the app UTF-8 decodes the bytes.
+- Invalid Base64 triggers a structured `invalidInput` error.
+
 ## Why decoding can fail
 
-Base64 decode should reject malformed input such as:
+Base64 decode rejects malformed input such as:
 
 - characters outside the Base64 alphabet
 - invalid padding positions

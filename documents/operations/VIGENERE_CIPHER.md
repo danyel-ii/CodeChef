@@ -1,12 +1,12 @@
 # Vigenere Cipher
 
-## What it is
+## What it does
 
 The Vigenere cipher is a polyalphabetic substitution cipher.
 
 Instead of using one fixed shift for the whole message, it uses a keyword. Each key letter produces a different alphabetic shift.
 
-## How it works
+## Core algorithm in the app
 
 1. Choose an alphabetic key such as `LEMON`.
 2. Convert each key letter to a shift value:
@@ -51,6 +51,15 @@ output = 'A' + ((input - 'A' - keyShift + 26) mod 26)
 
 The lowercase version uses `'a'` as the base.
 
+## Key advancement rule
+
+The app only advances the key when it processes an alphabetic character.
+
+That means spaces, punctuation, and digits:
+
+- remain unchanged
+- do not consume a key letter
+
 ## Example
 
 Plaintext:
@@ -82,12 +91,6 @@ Decoding that ciphertext with the same key returns:
 ```text
 ATTACKATDAWN
 ```
-
-## Why it differs from Caesar
-
-Caesar uses one shift everywhere.
-
-Vigenere changes the shift from letter to letter, which makes simple frequency analysis harder than with Caesar.
 
 ## Important limitation
 

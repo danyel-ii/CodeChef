@@ -2,11 +2,11 @@
 
 ## Slide deck
 
- - [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
+- [Base64 Deconstructed](/Users/danyel-ii/CodeChef/apps/mobile/assets/pdfs/operations/base64_deconstructed.pdf)
 
-## What it is
+## What it does
 
-Base64 Encode turns binary data or text bytes into a limited alphabet made of:
+Base64 Encode turns raw bytes into a restricted text alphabet made of:
 
 - `A-Z`
 - `a-z`
@@ -18,7 +18,7 @@ with `=` used as padding.
 
 It is an encoding format, not encryption.
 
-## How it works
+## Core algorithm
 
 1. Convert the input into bytes.
 2. Read the bytes in groups of 3.
@@ -26,6 +26,36 @@ It is an encoding format, not encryption.
 4. Split those 24 bits into 4 groups of 6 bits.
 5. Map each 6-bit value to a Base64 character.
 6. If the input length is not divisible by 3, pad the output with `=`.
+
+## Bit layout example
+
+Take the three ASCII bytes for `Man`:
+
+```text
+M = 01001101
+a = 01100001
+n = 01101110
+```
+
+Concatenate them:
+
+```text
+010011 010110 000101 101110
+```
+
+These 6-bit values are:
+
+```text
+19 22 5 46
+```
+
+Mapping those values into the Base64 alphabet gives:
+
+```text
+T W F u
+```
+
+So `Man` becomes `TWFu`.
 
 ## Why the output gets longer
 
@@ -53,6 +83,14 @@ Encoded output:
 SGVsbG8=
 ```
 
+## App-specific behavior
+
+The app exposes one formatting parameter:
+
+- `lineBreakInterval`
+
+If that value is greater than zero, the encoded string is chunked into fixed-width segments and joined with newline characters after encoding.
+
 ## What the padding means
 
 Padding exists because Base64 encodes complete 24-bit groups.
@@ -60,12 +98,6 @@ Padding exists because Base64 encodes complete 24-bit groups.
 - 3 bytes need no padding
 - 2 bytes need 1 `=`
 - 1 byte needs 2 `=`
-
-## When to use it
-
-- transporting binary through text-only systems
-- embedding binary data in JSON
-- handling APIs that expect Base64 payloads
 
 ## Important limitation
 

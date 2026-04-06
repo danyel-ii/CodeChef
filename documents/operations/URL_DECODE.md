@@ -1,49 +1,49 @@
 # URL Decode
 
-## What it is
+## What it does
 
-URL Decode reverses percent escapes and reconstructs the original text.
+URL Decode reverses percent-encoded URI component text back into normal characters.
 
-## How it works
+## Core algorithm in the app
 
-1. Walk left to right through the encoded text.
-2. When a `%` appears, read the next two hex digits.
-3. Convert that `%HH` sequence into one byte.
-4. Copy ordinary characters through unchanged.
-5. If form-style mode is enabled, turn `+` into a space.
-6. Decode the recovered bytes into text.
+1. Optionally rewrite `+` as `%20` if `plusAsSpace=true`.
+2. Pass the prepared string into `Uri.decodeComponent(...)`.
+3. Let the URI decoder turn each `%HH` byte escape back into the original characters.
 
 ## Example
 
 Input:
 
 ```text
-hello%20world
+A%20value%20with%20spaces%20%26%20symbols%21
 ```
 
 Output:
 
 ```text
-hello world
+A value with spaces & symbols!
 ```
 
-Form-style example:
+## Why the `+` option exists
+
+In strict URI component encoding, a literal plus sign is just `+`.
+
+In HTML form encoding, `+` is often used as a shorthand for space.
+
+The app defaults `plusAsSpace=true`, so:
 
 ```text
-hello+world
+a+b
 ```
 
 becomes:
 
 ```text
-hello world
+a b
 ```
 
-## Why decoding can fail
+unless you turn that behavior off.
 
-Decoding should reject malformed escapes such as:
+## Failure mode
 
-- `%` not followed by two characters
-- `%` followed by non-hex digits
-
-Those are structural errors, not partial successes.
+Malformed percent escapes fail during decoding rather than producing guessed output.

@@ -1,53 +1,49 @@
 # URL Encode
 
-## What it is
+## What it does
 
-URL Encode replaces characters that are unsafe or reserved in URL components with percent escapes.
+URL Encode percent-escapes characters that are unsafe or reserved inside URI components.
 
-A percent escape has this form:
+## Core algorithm in the app
+
+1. Treat the input as text.
+2. Run `Uri.encodeComponent(...)` on the string.
+3. Optionally replace `%20` with `+` if `spaceAsPlus=true`.
+
+## Percent-encoding mechanics
+
+URL encoding works on bytes. A byte with hexadecimal value `HH` is represented as:
 
 ```text
 %HH
 ```
 
-where `HH` is the hexadecimal byte value.
+For example:
 
-## How it works
-
-1. Walk through the input text.
-2. Leave URL-safe unreserved characters unchanged.
-3. Convert characters that must be escaped into bytes.
-4. Render each escaped byte as `%` plus two hex digits.
-5. If form-style encoding is enabled, turn spaces into `+` instead of `%20`.
+- space is byte `0x20`, so it becomes `%20`
+- `&` is byte `0x26`, so it becomes `%26`
+- `!` is byte `0x21`, so it becomes `%21`
 
 ## Example
 
 Input:
 
 ```text
-hello world
+A value with spaces & symbols!
 ```
 
 Output:
 
 ```text
-hello%20world
+A%20value%20with%20spaces%20%26%20symbols%21
 ```
 
-Form-style variant:
+With `spaceAsPlus=true`, the output becomes:
 
 ```text
-hello+world
+A+value+with+spaces+%26+symbols%21
 ```
 
-## Why it matters
+## Important note
 
-URLs assign special meaning to characters such as:
-
-- spaces
-- `?`
-- `&`
-- `=`
-- `%`
-
-Encoding prevents those characters from being misread as structure instead of content.
+This operation targets URI component encoding, which is correct for individual values. It is not intended to escape an already structured full URL verbatim.
