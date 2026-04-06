@@ -7,7 +7,19 @@ This folder contains the current app icon master asset:
 
 The launcher assets in Android and web are resized from this master icon.
 
+Android now uses adaptive launcher icons:
+
+- `@mipmap/ic_launcher`
+- `@mipmap/ic_launcher_round`
+
+with:
+
+- foreground: [ic_launcher_foreground.png](/Users/danyel-ii/CodeChef/apps/mobile/android/app/src/main/res/drawable-nodpi/ic_launcher_foreground.png)
+- background color: [ic_launcher_background.xml](/Users/danyel-ii/CodeChef/apps/mobile/android/app/src/main/res/values/ic_launcher_background.xml)
+
+This lets Android apply the platform-standard rounded masking on install instead of baking the corner shape into the bitmap.
+
 Source note:
 
-- The icon is derived from `/Users/danyel-ii/Library/CloudStorage/ProtonDrive-danyel-ii@proton.me-folder/1775502898342.png`
-- The source is already a square 1024x1024 asset, so the launcher files are direct resizes from that master
+- The icon is derived from `/Users/danyel-ii/Library/CloudStorage/ProtonDrive-danyel-ii@proton.me-folder/icon.png`
+- The source is a square 1024x1024 PNG with transparency, so it is used directly for the adaptive foreground and resized launcher outputs
