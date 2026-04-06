@@ -9,5 +9,5 @@ The launcher assets in Android and web are resized from this master icon.
 
 Source note:
 
-- The icon is derived from `/Users/danyel-ii/Library/CloudStorage/ProtonDrive-danyel-ii@proton.me-folder/image (2) (2).png`
-- The launcher assets were regenerated from a centered square crop of that logo
+- The icon is derived from `/Users/danyel-ii/Library/CloudStorage/ProtonDrive-danyel-ii@proton.me-folder/1775502898342.png`
+- The source is already a square 1024x1024 asset, so the launcher files are direct resizes from that master
