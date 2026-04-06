@@ -32,6 +32,7 @@ dependencies:
   flutter_file_dialog: ^3.0.3
   pdfrx: ^2.2.24
   path_provider: ^2.1.5
+  sqlite3_flutter_libs: ^0.5.38
   persistence_drift:
     path: ../../packages/persistence_drift
   recipe_domain:
