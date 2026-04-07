@@ -5,7 +5,10 @@ This folder contains the current app icon master asset:
 - [app_icon_master.png](app_icon_master.png)
 - [app_icon_source_square.png](app_icon_source_square.png)
 
-The launcher assets in Android and web are resized from this master icon.
+The launcher assets in Android and web are generated from these repo-contained files:
+
+- `app_icon_source_square.png`: the raw square source artwork
+- `app_icon_master.png`: the padded master used for legacy Android and web icon outputs
 
 Android now uses adaptive launcher icons:
 
@@ -21,5 +24,6 @@ This lets Android apply the platform-standard rounded masking on install instead
 
 Source note:
 
-- The source art used by the app has been copied into this repo as `app_icon_master.png`
-- The master is a square 1024x1024 PNG with transparency, so it is used directly for the adaptive foreground and resized launcher outputs
+- The source art used by the app has been copied into this repo as `app_icon_source_square.png`
+- The adaptive foreground is generated separately with extra inset so Android can apply its normal rounded launcher mask without clipping the artwork
+- The master is a padded 1024x1024 PNG with transparency, used for legacy launcher and web outputs
