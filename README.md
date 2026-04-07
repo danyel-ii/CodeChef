@@ -21,7 +21,7 @@ Android APKs are published to [GitHub Releases](https://github.com/danyel-ii/Cod
 4. If Android asks you to allow installation from unknown sources, grant the permission and proceed.
 5. After install, verify the app appears with the current [Code Chef icon](apps/mobile/assets/icon/app_icon_master.png).
 
-For full details see [Android Releases](documents/ANDROID_RELEASES.md).
+For full details see [Android Releases](documents/releases/ANDROID.md).
 
 ## Bundled slide decks
 
@@ -83,10 +83,10 @@ The maintained deck folder is:
 
 ## Documentation
 
-- [Project Overview](documents/PROJECT_OVERVIEW.md)
-- [Learning App Review](documents/LEARNING_APP_REVIEW.md)
-- [Android Releases](documents/ANDROID_RELEASES.md)
-- [Slide Decks](documents/SLIDE_DECKS.md)
+- [Project Overview](documents/product/OVERVIEW.md)
+- [Learning App Review](documents/product/LEARNING_APP_REVIEW.md)
+- [Android Releases](documents/releases/ANDROID.md)
+- [Slide Decks](documents/product/SLIDE_DECKS.md)
 
 ## Development
 

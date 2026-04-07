@@ -2,10 +2,13 @@
 
 This folder contains product-facing documentation for the Code Chef app.
 
-## Contents
+## Sections
 
-- [Project Overview](PROJECT_OVERVIEW.md)
-- [Learning App Review](LEARNING_APP_REVIEW.md)
-- [Android Releases](ANDROID_RELEASES.md)
-- [Slide Decks](SLIDE_DECKS.md)
-- [Operation Guides](operations/README.md)
+- Product
+  - [Overview](product/OVERVIEW.md)
+  - [Learning App Review](product/LEARNING_APP_REVIEW.md)
+  - [Slide Decks](product/SLIDE_DECKS.md)
+- Releases
+  - [Android Releases](releases/ANDROID.md)
+- Reference
+  - [Operation Guides](operations/README.md)

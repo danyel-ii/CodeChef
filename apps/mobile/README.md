@@ -1,17 +1,37 @@
-# mobile_recipe_lab_mobile
+# Code Chef Mobile App
 
-A new Flutter project.
+This package contains the Android-first Flutter application for Code Chef.
 
-## Getting Started
+## Responsibilities
 
-This project is a starting point for a Flutter application.
+- app shell, routing, and feature screens
+- schema-driven workbench editing
+- local recipe library flows
+- in-app learning and PDF deck viewing
+- Android packaging, icons, and release output
 
-A few resources to get you started if this is your first Flutter project:
+## Key folders
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- `lib/src/app`
+  - app bootstrap, routing, and installed pack wiring
+- `lib/src/features`
+  - user-facing feature areas such as Workbench, Learn, Library, Settings, and Documents
+- `assets/icon`
+  - source-of-truth app icon assets
+- `assets/pdfs`
+  - bundled PDF slide decks shipped in the Android app
+- `android`
+  - Android manifest, adaptive icons, and release config
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Run locally
+
+```bash
+flutter run -d android
+```
+
+## Validate
+
+```bash
+flutter analyze
+flutter test
+```
