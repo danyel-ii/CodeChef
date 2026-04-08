@@ -90,6 +90,51 @@ The MCP server package now adds:
   - `core.hash`
   - `core.format`
 
+## What works right now
+
+You can already validate the agent-facing surface in two ways.
+
+### 1. Local MCP host on your machine
+
+Run:
+
+```bash
+cd packages/agent_mcp_server
+dart run bin/agent_mcp_server.dart
+```
+
+Then connect an MCP-capable client to that stdio process and call:
+
+- `tools/list`
+- `tools/call` with `list_packs`
+- `tools/call` with `list_operations`
+- `tools/call` with `describe_operation`
+- `tools/call` with `run_single_operation`
+- `tools/call` with `run_recipe`
+
+That proves:
+
+- the registry is discoverable
+- schemas and manifests are exposed
+- the execution engine can be driven without the UI
+- learning content is reachable from the machine-facing surface
+
+### 2. Android control-plane verification
+
+Install a build from the `AgentAccess` branch and open `Settings`.
+
+Verify:
+
+1. `Agent Access` settings load.
+2. Agent access can be enabled and disabled.
+3. Approval mode can be changed.
+4. An `MCP` session can be started.
+5. The app shows an active-session banner.
+6. Per-request approval prompts appear when enabled.
+7. Audit entries appear.
+8. Audit export works.
+9. Audit retention settings persist.
+
 ## Security model
 
 Agent access is not unconditional.
@@ -142,6 +187,8 @@ This branch still does not yet include:
 - an HTTPS server implementation
 - certificate / key management for HTTPS
 - trust-bound local transport selection for HTTPS
+
+That means an external agent cannot yet attach directly to the installed Android app as a packaged host. Today, the MCP host runs as a Dart process on a development machine, while Android already provides the consent/session/audit control plane that a future packaged host will need.
 
 HTTPS remains intentionally deferred. This branch does not open an HTTPS listener until:
 

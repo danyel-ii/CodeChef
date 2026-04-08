@@ -70,6 +70,52 @@ The maintained deck folder is:
   - MCP stdio server package
   - Android-visible consent/session/audit controls
 
+## Agent Access
+
+The `AgentAccess` branch adds a machine-facing runtime around the same engine the app uses.
+
+What works now:
+
+- headless execution through `agent_bridge`
+- MCP tool dispatch through `agent_mcp`
+- stdio MCP serving through `agent_mcp_server`
+- Android-visible consent, session, approval, and audit controls inside `Settings`
+
+What does not exist yet:
+
+- Android service/process packaging for the MCP host
+- HTTPS listener and certificate handling
+
+### Try it locally
+
+Run the MCP server package:
+
+```bash
+cd packages/agent_mcp_server
+dart run bin/agent_mcp_server.dart
+```
+
+Connect an MCP-capable client to that stdio command and exercise:
+
+- `tools/list`
+- `tools/call` with `list_packs`
+- `tools/call` with `list_operations`
+- `tools/call` with `describe_operation`
+- `tools/call` with `run_single_operation`
+- `tools/call` with `run_recipe`
+
+### Verify the Android side
+
+In the app:
+
+1. Open `Settings`.
+2. Enable `Agent Access`.
+3. Choose an approval mode.
+4. Start an `MCP` session.
+5. Confirm the active-session banner appears.
+6. Confirm per-request approval prompts appear when approval mode is `perRequest`.
+7. Confirm audit entries appear and can be exported.
+
 ## Repository layout
 
 - [apps/mobile](apps/mobile): Flutter application
