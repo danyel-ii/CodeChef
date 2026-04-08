@@ -6,11 +6,10 @@ import 'package:executor_broker/executor_broker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_recipe_lab_mobile/src/app/pack_catalog.dart';
+import 'package:mobile_recipe_lab_mobile/src/app/persistence_providers.dart';
 import 'package:mobile_recipe_lab_mobile/src/features/workbench/report_exporter.dart';
 import 'package:operation_registry/operation_registry.dart';
 import 'package:pack_learning_content/pack_learning_content.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:persistence_drift/persistence_drift.dart';
 import 'package:recipe_domain/recipe_domain.dart';
 
 final operationRegistryProvider = Provider<OperationRegistry>((Ref ref) {
@@ -24,24 +23,6 @@ final executorBrokerProvider = Provider<ExecutorBroker>((Ref ref) {
 
 final workbenchServiceProvider = Provider<WorkbenchService>((Ref ref) {
   return WorkbenchService(ref.watch(executorBrokerProvider));
-});
-
-final recipeStoreProvider = FutureProvider<RecipeStore>((Ref ref) async {
-  String? sqliteFilePath;
-  if (!kIsWeb) {
-    final directory = await getApplicationDocumentsDirectory();
-    sqliteFilePath = '${directory.path}/mobile_recipe_lab.sqlite';
-  }
-  final store = RecipeStore(RecipeDatabase.open(sqliteFilePath: sqliteFilePath));
-  ref.onDispose(() {
-    unawaited(store.close());
-  });
-  return store;
-});
-
-final savedRecipesProvider = FutureProvider<List<SavedRecipeRecord>>((Ref ref) async {
-  final store = await ref.watch(recipeStoreProvider.future);
-  return store.listRecipes();
 });
 
 final availableOperationsProvider = Provider<List<RegisteredOperation>>((Ref ref) {

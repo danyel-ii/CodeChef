@@ -64,6 +64,11 @@ The maintained deck folder is:
   - `core.format`
   - `core.cipher`
 - Android release pipeline for GitHub Releases
+- Agent-access foundation on the `AgentAccess` branch:
+  - headless runtime bridge
+  - MCP tool adapter
+  - MCP stdio server package
+  - Android-visible consent/session/audit controls
 
 ## Repository layout
 
@@ -85,6 +90,7 @@ The maintained deck folder is:
 
 - [Project Overview](documents/product/OVERVIEW.md)
 - [Learning App Review](documents/product/LEARNING_APP_REVIEW.md)
+- [Agent Access](documents/product/AGENT_ACCESS.md)
 - [Android Releases](documents/releases/ANDROID.md)
 - [Slide Decks](documents/product/SLIDE_DECKS.md)
 

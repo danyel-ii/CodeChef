@@ -1,4 +1,4 @@
-name: persistence_drift
+name: agent_mcp
 publish_to: none
 environment:
   sdk: ^3.4.0
@@ -6,15 +6,19 @@ environment:
 dependencies:
   agent_bridge:
     path: ../agent_bridge
-  drift: ^2.22.1
   execution_protocol:
     path: ../execution_protocol
-  sqlite3: ^2.7.4
+  pack_learning_content:
+    path: ../pack_learning_content
   recipe_domain:
     path: ../recipe_domain
 
 dev_dependencies:
-  drift_dev: ^2.22.1
   lints: ^5.1.1
+  pack_core_text:
+    path: ../pack_core_text
+  executor_broker:
+    path: ../executor_broker
+  operation_registry:
+    path: ../operation_registry
   test: ^1.25.15
-  build_runner: ^2.4.15

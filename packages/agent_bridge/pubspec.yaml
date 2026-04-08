@@ -1,0 +1,24 @@
+name: agent_bridge
+publish_to: none
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+  execution_protocol:
+    path: ../execution_protocol
+  executor_broker:
+    path: ../executor_broker
+  operation_registry:
+    path: ../operation_registry
+  pack_learning_content:
+    path: ../pack_learning_content
+  recipe_domain:
+    path: ../recipe_domain
+
+dev_dependencies:
+  executor_isolate:
+    path: ../executor_isolate
+  lints: ^5.1.1
+  pack_core_text:
+    path: ../pack_core_text
+  test: ^1.25.15

@@ -1,0 +1,26 @@
+# melos_managed_dependency_overrides: agent_bridge,agent_mcp,execution_protocol,executor_broker,executor_isolate,operation_registry,pack_core_text,pack_learning_content,recipe_domain,pack_core_cipher,pack_core_format,pack_core_hash
+dependency_overrides:
+  agent_bridge:
+    path: ../agent_bridge
+  agent_mcp:
+    path: ../agent_mcp
+  execution_protocol:
+    path: ../execution_protocol
+  executor_broker:
+    path: ../executor_broker
+  executor_isolate:
+    path: ../executor_isolate
+  operation_registry:
+    path: ../operation_registry
+  pack_core_cipher:
+    path: ../pack_core_cipher
+  pack_core_format:
+    path: ../pack_core_format
+  pack_core_hash:
+    path: ../pack_core_hash
+  pack_core_text:
+    path: ../pack_core_text
+  pack_learning_content:
+    path: ../pack_learning_content
+  recipe_domain:
+    path: ../recipe_domain

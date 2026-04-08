@@ -1,7 +1,5 @@
-# melos_managed_dependency_overrides: execution_protocol,recipe_domain,agent_bridge,executor_broker,executor_isolate,operation_registry,pack_learning_content
+# melos_managed_dependency_overrides: execution_protocol,executor_broker,executor_isolate,operation_registry,pack_core_text,pack_learning_content,recipe_domain
 dependency_overrides:
-  agent_bridge:
-    path: ../agent_bridge
   execution_protocol:
     path: ../execution_protocol
   executor_broker:
@@ -10,6 +8,8 @@ dependency_overrides:
     path: ../executor_isolate
   operation_registry:
     path: ../operation_registry
+  pack_core_text:
+    path: ../pack_core_text
   pack_learning_content:
     path: ../pack_learning_content
   recipe_domain:
